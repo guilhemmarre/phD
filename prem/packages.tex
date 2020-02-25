@@ -1,0 +1,217 @@
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx,color}
+\usepackage{multirow}
+%\usepackage[top=3.3cm, bottom=3.5cm, left=3.3cm, right=3.3cm]{geometry}
+\usepackage{epsfig}
+\usepackage{color, colortbl}
+\usepackage{setspace}
+\usepackage{latexsym}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[titletoc]{appendix}
+\usepackage{alltt}
+\graphicspath{ {images/} }
+\usepackage{longtable}
+\usepackage{tikz}
+%\usepackage{acronym}
+\usepackage{pgfplots}
+\usepackage[hidelinks]{hyperref}
+%\usepackage{tocloft}
+%\setcounter{tocdepth}{1}
+%\renewcommand{\cftdot}{}
+\usepackage{titletoc,tocloft}
+%\setlength{\cftsecindent}{2cm}
+\setlength{\cftsubsecindent}{1.2cm}
+\setlength{\cftsubsubsecindent}{1cm}
+%\dottedcontents{section}[1.5em]{}{1.3em}{.6em}
+
+\usepackage[sc]{mathpazo}
+\usepackage{sectsty}
+\usepackage{titlesec}
+\usepackage{textcase}
+
+
+
+\usepackage{natbib}
+\usepackage[english,frenchb]{babel}
+\usepackage[latin1,utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+
+\usepackage{caption}
+\captionsetup[table]{labelsep=space,labelfont=bf}
+\captionsetup[figure]{labelsep=space,labelfont=bf}
+\setcounter{page}{1}
+\newtheorem{definition}{Definition}
+\newcommand{\brdefinition}{\begin{definition}}
+	\newcommand{\erdefinition}{\end{definition}}
+
+\newtheorem{corollary}{Corollary}
+\newcommand{\bcorollary}{\begin{corollary}}
+	\newcommand{\ecorollary}{\end{corollary}}
+\newtheorem{example}{Example}
+\newcommand{\bexample}{\begin{example}}
+	\newcommand{\eexample}{\end{example}}
+\newtheorem{remark}{Remark}
+\newcommand{\bremark}{\begin{remark}}
+	\newcommand{\eremark}{\end{remark}}
+\newcommand{\bproof}{{\bf {Proof:}}}
+\newcommand{\eproof}{}
+\newcommand{\bsolution}{{\bf {Solution:}}}
+\newcommand{\esolution}{}
+\newtheorem{theorem}{Theorem}
+\newcommand{\btheorem}{\begin{theorem}}
+	\newcommand{\etheorem}{\end{theorem}}
+\newtheorem{lemma}{Lemma}
+\newcommand{\blemma}{\begin{lemma}}
+	\newcommand{\elemma}{\end{lemma}}
+\newcommand{\UD}{\ensuremath{\bigtriangleup}}
+\newcommand{\IC}{\ensuremath{\mathcal{C}} }
+%\renewcommand{\rm}{\normalshape}
+\newcommand{\ol}{\overline}
+\def\cen{\centerline}
+\def\pnq{\par\noindent\quad}
+\def\pn{\par\noindent}
+\newcommand{\non}{\nonumber}
+\newcommand{\mC}{{\mathbb C}}
+\newcommand{\mN}{{\mathbb N}}
+\newcommand{\mU}{{\mathbb U}}
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cR}{{\mathcal R}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cUCV}{{\mathcal UCV}}
+\newcommand{\cST}{{\mathcal ST}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\brdef}{\begin{defi}}
+	\newcommand{\erdef}{\end{defi}}
+\newcommand{\bcor}{\begin{cor}}
+	\newcommand{\ecor}{\end{cor}}
+\newcommand{\bth}{\begin{thm}}
+	\newcommand{\ble}{\begin{lem}}
+		\newcommand{\ele}{\end{lem}}
+	\newcommand{\bcha}{\end{cha}}\pagestyle{plain}
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+\renewcommand{\thetheorem}{\thesection.\arabic{theorem}}
+\renewcommand{\thecorollary}{\thesection.\arabic{corollary}}
+\renewcommand{\thelemma}{\thesection.\arabic{lemma}}
+\renewcommand{\thedefinition}{\thesection.\arabic{definition}}
+\renewcommand{\theexample}{\thesection.\arabic{example}}
+\renewcommand{\theremark}{\thesection.\arabic{remark}}
+\renewcommand{\thechapter}{\arabic{chapter}}
+
+\def\cen{\centerline}
+\def\pnq{\par\noindent\quad}
+\def\pn{\par\noindent}
+\def\sevenpoint{%
+	\def\rm{\sevenrm}%
+	\def\it{\sevenit}%
+	\def\bf{\sevenbf}%
+	\rm}
+%\pretoler
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+\theoremstyle{definition}
+\renewcommand*{\proofname}{{\rm Proof}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Chapter title format
+\usepackage{sectsty}
+\usepackage{titlesec}
+\chapterfont{\centering }
+\titleformat{\chapter}[display]
+{\bf\centering}
+{\chaptertitlename\ \thechapter}{16pt}{\large}
+\sectionfont{\normalfont}
+%\renewcommand*\contentsname{\large \centerline{TABLE OF CONTENTS}}
+\renewcommand\cftchappresnum{} % prefix "Chapter " to chapter number in ToC
+\cftsetindents{chapter}{0em}{3em}      % set amount of indenting
+\cftsetindents{section}{0em}{3em}
+
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% For Terms and Abbreviations 
+\usepackage[acronym,section]{glossaries}
+\makenoidxglossaries
+%\renewcommand*\glspostdescription{\cftdotfill{\cftsecdotsep}}
+%\renewcommand{\glossarysection}[2][]{{\centering\bfseries\MakeTextUppercase{#2}\par}}
+
+%\renewcommand*{\bibpagespunct}{\addcolon\space}
+
+\definecolor{butter1}{rgb}{0.988,0.914,0.310}
+\definecolor{chocolate1}{rgb}{0.914,0.725,0.431}
+\definecolor{chameleon1}{rgb}{0.541,0.886,0.204}
+\definecolor{skyblue1}{rgb}{0.447,0.624,0.812}
+\definecolor{plum1}{rgb}{0.678,0.498,0.659}
+\definecolor{scarletred1}{rgb}{0.937,0.161,0.161}
+
+
+%For Table Column Width
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% sur le net
+\renewcommand{\arraystretch}{1.2} 
+\usepackage{makecell}%To keep spacing of text in tables
+\setcellgapes{4pt}%parameter for the spacing
+
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother
+
+\usepackage{a4wide}
+\usepackage{tabularx}
+\usepackage{chngpage}
+\usepackage{siunitx}
+\usepackage{subscript}
+\usepackage{rotfloat}
+\usepackage{rotating}
+\newcommand*{\innerTabular}[1]{{\begin{tabular}[c]{@{}c@{}}#1\end{tabular}}}
+\usepackage{pdfpages}
+\usepackage{booktabs}
+\usepackage{calc}
+\usepackage{fancybox}
+\usepackage{enumitem}
+\usepackage{eurosym}
+\usepackage[skins]{tcolorbox}
+\usepackage{lscape}
+%\usepackage{lineno}
+%\usepackage[nottoc,numbib]{tocbibind} %mettre la biblio dans la toc
+%\newcommand{\nocontentsline}[3]{}
+%\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\} %titre de paragraphe
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X} %modif de tabularx pour centrer
+
+\definecolor{Gray}{gray}{0.9} %couleur dans les tableaux
+
+\renewcommand{\thesection}{\arabic{section}} %numeros romains
+
+\usepackage[Sonny]{fncychap} % joli chapitre
+
+\usepackage{fancyhdr}
+\fancyhead{}
+
+\renewcommand{\labelitemi}{$\bullet$}
+
+\setcounter{secnumdepth}{3}
+
+%from nico with love
+\newenvironment{changemargin}[3]{\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{0pt}%
+\setlength{\rightmargin}{0pt}%
+\setlength{\topmargin}{0pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{0pt plus 1pt}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+\addtolength{\topmargin}{#3}%
+}\item }{\end{list}}

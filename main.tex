@@ -1,0 +1,86 @@
+% Définition du type de document
+\documentclass[10pt,twoside,openright,a4paper]{book} % This style for A4 format. 
+
+% Chargement des packages depuis le fichier packages.tex
+\input{./prem/packages}
+%\include{./prem/newcommands}
+\pgfplotsset{compat=1.14}
+\DeclareCaptionType{Encadre}
+\input{./prem/acronyms}
+
+%%% Début du document - page de garde
+\begin{document}
+\input{./coverpage/coverpage-thesis}
+\renewcommand{\labelitemi}{$\bullet$}
+
+\onehalfspacing
+
+% avant-propos
+\cleardoublepage
+\pagenumbering{roman} % Numérotation des pages en chiffres romain
+\input{avant_propos} % avant-propos
+
+% remerciements
+\cleardoublepage
+\pagestyle{plain}
+\input{acknw}
+
+% Table des matières
+\cleardoublepage
+\tableofcontents
+\clearpage
+
+% Table des figures
+\addcontentsline{toc}{section}{\bf TABLE DES FIGURES}
+\listoffigures 
+
+% Table des tableaux
+\clearpage
+\addcontentsline{toc}{section}{\bf LISTE DES TABLEAUX}
+\listoftables 
+
+% Termes et abbréviations
+\clearpage
+\addcontentsline{toc}{section}{\bf LISTE DES SIGLES ET ABRÉVIATIONS}
+\printnoidxglossary[type=\acronymtype, title=\Huge\bf{Liste des sigles et abréviations}]
+
+
+\mainmatter
+\pagestyle{fancy}
+\pagenumbering{arabic} % Numérotation des pages en chiffres arabes
+\onehalfspace
+
+%%% Introduction
+\clearpage
+\part{Introduction, contexte et problématique}
+
+\fancyhead[LE,RO]{Section \thesubsection}
+\fancyhead[LO,RE]{CHAPITRE \thechapter}
+
+% Pied de page avec le récif
+%\fancyfoot[C]{\includegraphics[width=10cm]{images/misc/bandeau_bas.png}\\}
+
+\input{chapitre0-intro}
+
+%%% 
+\clearpage
+\part{Résultats}
+
+\fancyhead[LE,RO]{\rightmark}
+\fancyhead[LO,RE]{CHAPITRE \thechapter}
+
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+
+
+\input{chapitre1-methode}
+
+\clearpage
+\pagestyle{plain}
+
+% Bibliographie
+\part{Références bibliographiques}
+%\def\bibfont{\footnotesize}
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}
