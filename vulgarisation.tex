@@ -1,0 +1,51 @@
+\chapter{Article de vulgarisation : La garrigue vue du ciel} \label{vulgarisation}
+
+\newpage
+\newpage
+
+La garrigue, mosaïque de paysages, tend à s'uniformiser face à l'avancée progressive de la forêt. Mais contrairement aux idées reçues, le regain de la forêt n'est pas toujours positif. C'est le cas pour la garrigue où la fermeture des milieux est problématique. Des méthodes basées sur la reconnaissance de motifs à partir d'images satellites sont développées pour comprendre et cartographier le paysage et aider les acteurs concernés par le devenir de la garrigue, comme Jean-René, éleveur de chèvres dans le causse d'Aumelas.
+
+Lorsque Jean-René, le petit fils de M. Seguin, se promène dans la garrigue à la recherche de ses chèvres encore égarées - décidément, c'est de famille - il y passe parfois des heures. Pas facile en effet de s'y retrouver dans ce dédale de végétation : ça pique, ça gratte et puis on n'y voit pas grand-chose avec cette mosaïque de grands chênes verts, ces touffes de chênes kermès, de genêts et autres genévriers.
+
+La garrigue, c'est un gigantesque puzzle composé de plusieurs pièces imbriquées : des arbres, des buissons, de l'herbe. Seulement, depuis que les collègues de Jean-René ont arrêté leur activité pastorale à cause d'une augmentation de la compétition économique [1], \#crisedel'emploi, l'herbe et les buissons ne sont plus broutés, ils poussent en paix et le paysage tend à se fermer pour laisser place à une forêt dense.
+
+\textbf{Mais alors pourquoi c'est pas cool le regain de la forêt ?}
+
+
+Cette fermeture des milieux pose quelques problèmes. En premier lieu pour Jean-René lui-même qui a de plus en plus de mal à savoir où faire pâturer ses chèvres : où peuvent-elles circuler dans ce labyrinthe ? Où est la boustifaille ? Mais surtout où diable se sont-elles encore fourrées ? Et puis ça dégrade aussi la qualité du paysage : au grand dam d'Isodore De Lahaute, citadin en mal de nature qui ne verra plus que des arbres à perte de vue lors de ses sorties champêtres, au lieu de petits murets \emph{sooo} XIXième siècle et des prairies sèches parsemées d'orchidées ou d'iris sauvages.
+
+L'idéal, ce serait d'avoir une carte pour s'orienter, ou bien un (très grand) escabeau pour y voir un peu plus clair. Jean-René a bien pensé à acheter une montgolfière, comme à l'époque de la grande guerre où des clichés étaient pris depuis des ballons pour aider les poilus à s'y retrouver dans les tranchées [2]. Seulement, c'est un peu cher (\#crisedel'emploi n°2) et puis maintenant il y a bien mieux : les images satellites. Elles ont maintenant une telle précision qu'il est presque possible de voir la calvitie naissante de Jean-René.
+
+\textbf{Des satellites pour prendre de la hauteur}
+
+Les motifs dessinés par les arbres et par les buissons sont maintenant bien apparents pour Jean-René muni de telles images. C'est facile à reconnaître. En effet, question motif, le cerveau est balèze : il est capable de reconnaître quantités de textures très rapidement, de manière intuitive. Paradoxalement, cette intuition pose problème : comme on n'a pas tous le même cerveau, nous n'avons pas tous les mêmes perceptions. Selon que ce soit Jean-René ou son filleul qui essaie de déterminer la structure de la garrigue, l'interprétation ne sera pas tout à fait la même, d'autant que Jean-René, un peu astigmate, ne voit plus très bien.
+
+Heureusement pour lui, les maths associés à l'informatique parviennent à traduire la perception humaine des textures [3,4]. Si les algorithmes de reconnaissance de motifs ne détectent pas aussi bien les textures que l’œil humain (\#manisstillthebest), ils présentent l'avantage d'être automatiques et de fournir des résultats constants dans le temps.
+
+\textbf{Analyser des motifs pour comprendre le paysage}
+
+Une approche possible en détection automatique de texture est l'approche fréquentielle. Le principe est de repérer des structures qui se répètent dans l'espace. Par exemple, Jean-René, adepte de la pizza, a bien remarqué que dans celle qu'il affectionne tout particulièrement, la pizza reine, il y a des motifs qui se répètent. Son préféré : celui dessiné par les champignons, bien remarquable. En effet : "une bonne reine est composée de champignons de 2 cm environ, espacés d'environ 3 cm" (propos recueillis auprès de Giovanni, pizzaiolo étoilé). Une reine de 33 cm, cuisinée selon les principes évoqués par Giovanni présente donc un motif d'une fréquence de 6,5 champignons par largeur de pizza. Grâce à cette approche, on peut traduire l'aspect visuel d'une pizza en termes fréquentiels. Ainsi on aura, par largeur de pizza : 6,5 champignons, 8 lardons, 56 bouts de fromages râpes, etc.
+
+C'est bien beau tout ça, l'approche de fréquentielle, les motifs, mais il fait comment le Jean-René pour retrouver ses chèvres avec ça ?
+
+En fait, ces motifs peuvent directement être liés à d'autres mesures qui nous intéressent. On peut par exemple en déduire à quel point les buissons et les arbres sont connectés entre eux et en déduire le chemin emprunté par les chèvres. On peut également connaître le pourcentage d'herbe dans une partie de la garrigue, ou autrement dit la part de gueuleton potentiel pour une chèvre. Tout ça automatiquement, sur l'ensemble du territoire occupé par Jean-René.
+
+\textbf{Une approche qui a encore de l'avenir devant elle}
+
+Cette méthode ne sert pas qu'à Jean-René, elle est également utile aux gestionnaires des espaces naturels, comme le CEN-LR (Centre des Espaces Naturels - Languedoc-Roussillon). Ils sont friands d'outils qui leur permettent d'avoir une vision globale du territoire. Ainsi, l'analyse des motifs dans une image satellitaire permet de connaître le taux de fermeture d'une garrigue. \emph{A fortiori}, on peut suivre l'évolution de la fermeture des milieux avec plusieurs images acquises à des dates différentes. Cette approche synthétique du territoire n'en est qu'à ses débuts et pourrait permettre de comprendre le comportement de certains animaux : quel type de paysage l'Outarde canepetière préfère-t-elle pour procréer [5] ? Elle permettrait également d'étudier l'impact de mesures de gestion : faut-il brûler les broussailles pour maintenir les garrigues ouvertes ? Ou bien faut-il les girobroyer ? Quelle sont les pratiques les plus efficaces à longs termes ? Celles qui respectent le mieux l'environnement ?
+
+La préservation des milieux ouverts méditerranéens comme la garrigue est de fait intimement liée aux interventions humaines (agriculture, pastoralisme, débroussaillage, etc.) si bien que l’avenir de la diversité biologique dans ces milieux ne peut être déconnecté de celui des activités humaines [5,6]. Encore faut-il bien comprendre lesquelles sont à favoriser et lesquelles sont à encadrer.
+
+\hrulefill
+
+[1] Sirami, C., Nespoulous, A., Cheylan, J.-P., Marty, P., Hvenegaard, G.T., Geniez, P., Schatz, B., Martin, J.-L., 2010. Long-term anthropogenic and ecological dynamics of a Mediterranean landscape: Impacts on multiple taxa. Landscape and Urban Planning 96, 214–223.
+
+[2] \href{https://fr.wikipedia.org/wiki/Photographie_aérienne}{https://fr.wikipedia.org/wiki/Photographie\_aérienne}
+
+[3] Couteron, P., Barbier, N., Gautier, D., 2006. Textural ordination based on Fourier spectral decomposition: a method to analyze and compare landscape patterns. Landscape Ecology 21, 555–567.
+
+[4] Olivier Regniers. Méthodes d'analyse de texture pour la cartographie d'occupations du sol par télédetection très haute résolution : application à la forêt, la vigne et les parcs ostréicoles. Traitement du signal et de l'image. Université de Bordeaux, 2014. Français.
+
+[5] Pointereau, P., Doxa, A., Coulon, F., Jiguet, F., Paracchini, M.L., 2010. Analysis of spatial and temporal variations of High Nature Value farmland and links with changes in bird populations: a study on France. Publications Office.
+
+[6] Médail, F., Diadema, K., 2006. Biodiversité végétale méditerranéennee et anthropisation : approches macro et micro-régionales. Annales de géographie 651, 618.

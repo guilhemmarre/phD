@@ -1,86 +1,159 @@
-% Définition du type de document
-\documentclass[10pt,twoside,openright,a4paper]{book} % This style for A4 format. 
+\documentclass[11pt,a4paper]{book} % This style for A4 format.
 
-% Chargement des packages depuis le fichier packages.tex
+% Importation des packages, commandes
 \input{./prem/packages}
-%\include{./prem/newcommands}
-\pgfplotsset{compat=1.14}
-\DeclareCaptionType{Encadre}
+% Importation des acronymes
 \input{./prem/acronyms}
 
-%%% Début du document - page de garde
+% Booléen pour afficher ou pas les commentaires de chapitres (pour la rédaction uniquement)
+\setboolean{displaytete}{false}
+
+%%% Debut du document
 \begin{document}
-\input{./coverpage/coverpage-thesis}
-\renewcommand{\labelitemi}{$\bullet$}
 
-\onehalfspacing
+% Page de garde
+\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./coverpage/couverture_these_UM.pdf}
 
-% avant-propos
-\cleardoublepage
-\pagenumbering{roman} % Numérotation des pages en chiffres romain
-\input{avant_propos} % avant-propos
+% Style préambule pour la première partie
+\pagestyle{preambule}
 
-% remerciements
-\cleardoublepage
-\pagestyle{plain}
+% Page blanche sans numérotation
+\newpage
+\clearpage
+\thispagestyle{empty}
+\hfill
+\newpage
+
+% Début numérotation chiffres romains
+\pagenumbering{roman}
+
+% Résumé
+\pagestyle{abstract}
+\input{abstract}
+\newpage
+
+% Remerciements
+\pagestyle{preambule}
 \input{acknw}
 
+% Avant propos
+\newpage
+\begin{spacing}{1.5}
+\input{avant_propos}
+\end{spacing}
+
 % Table des matières
-\cleardoublepage
-\tableofcontents
-\clearpage
+\newpage
+\begingroup
+\hypersetup{linkcolor=black}
+\begin{spacing}{1.5}
+	\tableofcontents
+\end{spacing}
+\endgroup
+\newpage
 
-% Table des figures
-\addcontentsline{toc}{section}{\bf TABLE DES FIGURES}
-\listoffigures 
+% Liste des figures
+\newpage
+%For Removing Extra Space in List of Tables and Figures before every chapter
+\let\origaddvspace\addvspace % on stock addvspace dans origaddvspace
+\renewcommand{\addvspace}[1]{}
+\begingroup
+\hypersetup{linkcolor=black}
+\begin{spacing}{1.5}
+	\phantomsection
+	\addcontentsline{toc}{section}{LISTE DES FIGURES}
+	\setcounter{lofdepth}{2} \listoffigures
+\end{spacing}
+\endgroup
+\newpage
 
-% Table des tableaux
-\clearpage
-\addcontentsline{toc}{section}{\bf LISTE DES TABLEAUX}
-\listoftables 
+% Liste des tableaux
+\newpage
+\begingroup
+\hypersetup{linkcolor=black}
+\begin{spacing}{1.5}
+	\phantomsection
+	\addcontentsline{toc}{section}{LISTE DES TABLEAUX}
+	\setcounter{lotdepth}{2} \listoftables
+\end{spacing}
+\endgroup
+\newpage
 
 % Termes et abbréviations
-\clearpage
-\addcontentsline{toc}{section}{\bf LISTE DES SIGLES ET ABRÉVIATIONS}
-\printnoidxglossary[type=\acronymtype, title=\Huge\bf{Liste des sigles et abréviations}]
+\newpage
+\begingroup
+\hypersetup{linkcolor=black}
+\begin{spacing}{1.5}
+    \phantomsection
+    \addcontentsline{toc}{section}{LISTE DES SIGLES ET ABRÉVIATIONS}
+    \printnoidxglossary[type=\acronymtype, title={ {\sffamily \Large LISTE DES SIGLES ET ABRÉVIATIONS}}\vspace*{0.5cm}]
+\end{spacing}
+\endgroup
+\newpage
+
+%\clearpage
+%\pagestyle{preambule}
+%\addcontentsline{toc}{section}{LISTE DES SIGLES ET ABRÉVIATIONS}
+%\printnoidxglossary[type=\acronymtype, title={\centerline { {\sffamily \Large LISTE DES SIGLES ET ABRÉVIATIONS}}}\vspace*{0.5cm}]
 
 
-\mainmatter
-\pagestyle{fancy}
-\pagenumbering{arabic} % Numérotation des pages en chiffres arabes
-\onehalfspace
+% Restauration de la valeur originale de addvspace
+\renewcommand{\addvspace}[1]{\origaddvspace{#1}}
 
-%%% Introduction
-\clearpage
+\mainmatter % partie principale du bouquin
+\pagestyle{main}
+%\pagenumbering{arabic} % On commence la numérotation en chiffres arabes
+
 \part{Introduction, contexte et problématique}
-
-\fancyhead[LE,RO]{Section \thesubsection}
-\fancyhead[LO,RE]{CHAPITRE \thechapter}
-
-% Pied de page avec le récif
-%\fancyfoot[C]{\includegraphics[width=10cm]{images/misc/bandeau_bas.png}\\}
-
+\pagestyle{intro}
 \input{chapitre0-intro}
 
-%%% 
-\clearpage
 \part{Résultats}
 
-\fancyhead[LE,RO]{\rightmark}
-\fancyhead[LO,RE]{CHAPITRE \thechapter}
-
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
-
+\pagestyle{main}
 
 \input{chapitre1-methode}
 
-\clearpage
-\pagestyle{plain}
+%\input{./chapter4/ch4}
 
-% Bibliographie
-\part{Références bibliographiques}
-%\def\bibfont{\footnotesize}
-\bibliographystyle{apalike}
+%\input{./chapter5/ch5}
+
+%\input{./chapter6/ch6}
+
+
+\part{Discussion Générale}
+
+%\input{./chapter7/ch7_discussion}
+
+\backmatter
+\pagestyle{references}
+\phantomsection
+\bookmarksetup{startatroot}
+\pagestyle{references}
+\addcontentsline{toc}{section}{RÉFÉRENCES BIBLIOGRAPHIQUES}
+\bibliographystyle{apalike} % chicago
 \bibliography{references}
+\titleformat{\part}[display]
+{\sffamily \centering \huge \titlerule[1pt]\vspace{8pt}}%format
+{}%
+{5pt}%
+{}%
+[\vspace{12pt}\titlerule]
+\part*{ANNEXES}
+\bookmarksetupnext{level=section}
+\pagestyle{appendix}
+\begin{appendix}
+
+	%\appendixpage
+	\noappendicestocpagenum
+	\appendix
+	%\addappheadtotoc
+
+	\input{vulgarisation}
+	%\input{./appendix/diachronique}
+	%\input{./appendix/chapitre-qgis}
+	%\input{./appendix/method_ecology}
+
+\end{appendix}
 
 \end{document}
