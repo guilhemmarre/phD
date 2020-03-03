@@ -29,11 +29,13 @@
 \usepackage{multirow}
 \usepackage{longtable}
 \usepackage{booktabs}
+\usepackage{makecell}
+\renewcommand\cellgape{\Gape[6pt]} % interligne entre cellules d'un tableau
 %\usepackage{diagbox} % to draw diag separation in table
 
 % space and positioning management
 \usepackage{float}
-\usepackage{parskip} % paragraph positioning management
+%\usepackage{parskip} % paragraph positioning management (small-med-bigskip ne marchent plus si actif)
 \usepackage{setspace} % positioning environnement
 \usepackage{soul} % for hyphenation
 \usepackage{calc} % to set lenght, counter
@@ -47,6 +49,8 @@
 \usepackage{textcase} %Upper or lower case commands
 \usepackage{sectsty} % custom sections header
 \usepackage[nobottomtitles*]{titlesec} % custom sections header / option nobottomtitles to avoid section titles at the bottom of the page
+%\usepackage[explicit]{titlesec}
+
 \usepackage{titletoc} % handle section tilte in toc (add to content etc.)
 \usepackage[normalem]{ulem} % to strike out text, and highlight etc.
 %\usepackage{times}
@@ -64,12 +68,6 @@
 %\usepackage{csquotes} % gestion des citations
 %\usepackage{alltt} % custom verbatim environnement
 %\usepackage{acronym}
-
-
-\renewcommand{\baselinestretch}{1.25}
-
-% Package de style de chapitres avec son template "Sonny"
-\usepackage[Sonny]{fncychap} % http://www.nagel-net.de/Latex/DOKU/fncychap.pdf
 
 
 \usepackage[unicode=true,
@@ -185,7 +183,26 @@ breaklinks=true]{hyperref}
 	 
 %%%%%%%%%%%%%%%% Style et espacements des sections
 
-%\usepackage[Sonny]{fncychap}
+% Package de style de chapitres avec son template "Sonny"
+%\usepackage[Sonny]{fncychap} % http://www.nagel-net.de/Latex/DOKU/fncychap.pdf
+%\titleformat{\chapter}[hang]{\fillast}{\bfseries\MakeUppercase{\chaptertitlename\space\thechapter : #1}}{1ex minus .1ex}{\bfseries\uppercase}
+%\titleformat{\chapter}[hang]{\fillast}{\bfseries{\chaptertitlename\space\thechapter :}}{1ex minus .1ex}{\bfseries}
+
+% Alternative de titre mais qui fout le bordel
+%\newpagestyle{headplain}{%
+%\sethead[\thepage][][]{}{}{\thepage}}
+%\titleformat{\chapter}
+%[block]
+%{\normalfont\huge\bfseries}
+%{\thechapter}
+%{0pt} %
+%{\hspace{20pt}\huge}
+%\titlespacing*{\chapter}{0pt}{0pt}{30pt}
+
+
+
+
+
 %\allsectionsfont{\MakeTextUppercase}
 
 % Noms des variables utilisées dans les bandeaux et tableaux
@@ -195,9 +212,9 @@ breaklinks=true]{hyperref}
 \renewcommand{\chaptername}{Chapitre} % Affichage en en tête des pages du style "main"
 % https://latex.org/forum/viewtopic.php?t=1758
 \newcommand{\sectionname}{Section} % Section name jamais défini donc c'est un newcommand seulement
-\renewcommand{\appendixname}{ANNEXE}
-\renewcommand{\appendixtocname}{Annexes}
-\renewcommand{\appendixpagename}{Annexes}
+%\renewcommand{\appendixname}{ANNEXE}
+%\renewcommand{\appendixtocname}{Annexes}
+%\renewcommand{\appendixpagename}{Annexes}
 \renewcommand{\contentsname}{TABLE DES MATIÈRES}
 \renewcommand{\listfigurename}{LISTE DES FIGURES}
 \renewcommand{\listtablename}{LISTE DES TABLEAUX}
@@ -245,50 +262,53 @@ breaklinks=true]{hyperref}
 % \renewcommand\theparagraph{\alph{paragraph}.}
 % \titlespacing {\paragraph} {0pt} {12pt} {6pt}
 
+
 % Indentation générale
-\setlength{\parskip}{0.4cm plus1mm}
+% https://www.overleaf.com/learn/latex/Paragraph_formatting
+\setlength{\parskip}{0.2cm plus1mm} %  
 \setlength{\parindent}{0.5cm} % indentation pour un nouveau paragraphe
 \setlength{\itemsep}{3pt}
-\raggedbottom % controle la manière dont est répartie le text dans une page
-
-
+\raggedbottom % controle la manière dont est répartie le texte dans une page (aussi \flushbottom)
+% https://www.giss.nasa.gov/tools/latex/ltx-299.html
+\renewcommand{\baselinestretch}{1.25} % Définition de l'interligne
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter Header STYLE
-\setlength{\unitlength}{1mm}
+\setlength{\unitlength}{1mm} % defines the unit used in the picture environment
 
 %The green square
-\newcommand{\blob}{\textcolor{bleusubsection}{\rule[-10pt]{4cm}{1cm}}} % [offset vertical]{largeur}{hauteur}
-\newcommand{\blobblue}{\textcolor{blueblob}{\rule[-23pt]{2.2cm}{2.2cm}}} % [offset vertical]{largeur}{hauteur}
+%\newcommand{\blob}{\textcolor{bleusubsection}{\rule[-10pt]{4cm}{1cm}}} % [offset vertical]{largeur}{hauteur}
+%\newcommand{\blobblue}{\textcolor{blueblob}{\rule[-23pt]{2.2cm}{2.2cm}}} % [offset vertical]{largeur}{hauteur}
 
 % The upper right mark
-\newcommand{\rblob}[1]{ #1
-\begin{picture}(0,0)(5,0)
-\put(0,0){\blob}
-\end{picture}}
+%\newcommand{\rblob}[1]{ #1
+%\begin{picture}(0,0)(5,0)
+%\put(0,0){\blob}
+%\end{picture}}
 
-\newcommand{\rblobblue}[1]{ #1
-\begin{picture}(0,0)(-6.5,0)
-\put(0,0){\blobblue}
-\end{picture}}
+%\newcommand{\rblobblue}[1]{ #1
+%\begin{picture}(0,0)(-6.5,0)
+%\put(0,0){\blobblue}
+%\end{picture}}
 
 % The upper left mark
-\newcommand{\lblob}[1]{
-\begin{picture}(0,0)(28.5,0)
-\put(0,0){\blob}
-\end{picture}%
-#1
-}
+%\newcommand{\lblob}[1]{
+%\begin{picture}(0,0)(28.5,0)
+%\put(0,0){\blob}
+%\end{picture}%
+%#1
+%}
+
 
 %%%%%%%%%%%%%%%%% Haut de page
 % Chapitre courant pour l'introduction
 % RO
 \usepackage{tcolorbox}
 \newcommand\rbluebandintro{ 
-\begin{picture}(0,0)(5,5) % (width,height)(x-offset,y-offset)
+\begin{picture}(0,0)(5,2) % (width,height)(x-offset,y-offset)
     \begin{tcolorbox}[width=40mm, colframe=bleusubsection, colback=bleusubsection, boxsep=2mm, arc=4mm] % arc = argument de courbure, boxsep=hauteur
     \end{tcolorbox}
-    \begin{picture}(0,0)(35,-3)
-        \textcolor{white}{\fontsize{14}{14}{Introduction}}
+    \begin{picture}(0,0)(36,-3)
+        \textcolor{white}{\fontsize{14}{14}{\selectfont Introduction}}
     \end{picture} 
 \end{picture}   
 }
@@ -296,11 +316,38 @@ breaklinks=true]{hyperref}
 % LE
 \usepackage{tcolorbox}
 \newcommand\lbluebandintro{ 
-\begin{picture}(0,0)(35,5) % (width,height)(x-offset,y-offset)
+\begin{picture}(0,0)(35,2) % (width,height)(x-offset,y-offset)
+    \begin{tcolorbox}[width=40mm, colframe=bleusubsection, colback=bleusubsection, boxsep=2mm, arc=4mm]
+    \end{tcolorbox}
+    \begin{picture}(0,0)(30,-3)
+        \textcolor{white}{\fontsize{14}{14}{\selectfont Introduction}}
+    \end{picture}  
+\end{picture}   
+}
+
+
+
+% Chapitre courant pour la discussion
+% RO
+\usepackage{tcolorbox}
+\newcommand\rbluebanddiscussion{ 
+\begin{picture}(0,0)(5,2) % (width,height)(x-offset,y-offset)
+    \begin{tcolorbox}[width=40mm, colframe=bleusubsection, colback=bleusubsection, boxsep=2mm, arc=4mm] % arc = argument de courbure, boxsep=hauteur
+    \end{tcolorbox}
+    \begin{picture}(0,0)(35,-3)
+        \textcolor{white}{\fontsize{14}{14}{\selectfont Discussion}}
+    \end{picture} 
+\end{picture}   
+}
+
+% LE
+\usepackage{tcolorbox}
+\newcommand\lbluebanddiscussion{ 
+\begin{picture}(0,0)(35,2) % (width,height)(x-offset,y-offset)
     \begin{tcolorbox}[width=40mm, colframe=bleusubsection, colback=bleusubsection, boxsep=2mm, arc=4mm]
     \end{tcolorbox}
     \begin{picture}(0,0)(27,-3)
-        \textcolor{white}{\fontsize{14}{14}{Introduction}}
+        \textcolor{white}{\fontsize{14}{14}{\selectfont Discussion}}
     \end{picture}  
 \end{picture}   
 }
@@ -310,7 +357,7 @@ breaklinks=true]{hyperref}
 % RO
 \usepackage{tcolorbox}
 \newcommand\rblueband{ 
-\begin{picture}(0,0)(5,5) % (width,height)(x-offset,y-offset)
+\begin{picture}(0,0)(5,2) % (width,height)(x-offset,y-offset)
     \begin{tcolorbox}[width=40mm, colframe=bleusubsection, colback=bleusubsection, boxsep=2mm, arc=4mm] % arc = argument de courbure, boxsep=hauteur
     \end{tcolorbox}
         \begin{picture}(0,0)(35,-3)
@@ -318,10 +365,11 @@ breaklinks=true]{hyperref}
     \end{picture} 
 \end{picture}   
 }
+
 % LE
 \usepackage{tcolorbox}
 \newcommand\lblueband{ 
-\begin{picture}(0,0)(35,5) % (width,height)(x-offset,y-offset)
+\begin{picture}(0,0)(35,2) % (width,height)(x-offset,y-offset)
     \begin{tcolorbox}[width=40mm, colframe=bleusubsection, colback=bleusubsection, boxsep=2mm, arc=4mm]
     \end{tcolorbox}
     \begin{picture}(0,0)(27,-3)
@@ -330,9 +378,41 @@ breaklinks=true]{hyperref}
 \end{picture}   
 }
 
+% Chapitre courant pour les references
+% RO
+\usepackage{tcolorbox}
+\newcommand\rbluebandreferences{ 
+\begin{picture}(0,0)(5,2) % (width,height)(x-offset,y-offset)
+    \begin{tcolorbox}[width=40mm, colframe=bleusubsection, colback=bleusubsection, boxsep=2mm, arc=4mm] % arc = argument de courbure, boxsep=hauteur
+    \end{tcolorbox}
+    \begin{picture}(0,0)(35,-3)
+        \textcolor{white}{\fontsize{14}{14}{\selectfont Références}}
+    \end{picture} 
+\end{picture}   
+}
+
+% LE
+\usepackage{tcolorbox}
+\newcommand\lbluebandreferences{ 
+\begin{picture}(0,0)(35,2) % (width,height)(x-offset,y-offset)
+    \begin{tcolorbox}[width=40mm, colframe=bleusubsection, colback=bleusubsection, boxsep=2mm, arc=4mm]
+    \end{tcolorbox}
+    \begin{picture}(0,0)(27,-3)
+        \textcolor{white}{\fontsize{14}{14}{\selectfont Références}}
+    \end{picture}  
+\end{picture}   
+}
+
+
 
 
 % Section courante
+% Pour définir le nom de section courante
+% https://tex.stackexchange.com/questions/222370/how-can-i-customize-and-use-the-leftmark-and-rightmark-commands-with-custom-fa
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{#1}} % on ne garde que le nom de section et pas avec numéro (Introduction et pas 1.2 Introduction) => pour le running section title header
+\renewcommand{\subsectionmark}[1]{}
+
 % RE
 \newcommand\rsection{ 
 \begin{picture}(0,0)(5,2) % (width,height)(x-offset,y-offset)
@@ -346,6 +426,21 @@ breaklinks=true]{hyperref}
     \textcolor{black}{\fontsize{14}{14}\selectfont\sectionname~\thesubsection}
 \end{picture}   
 }
+
+%%%% Backup qui fonctionne
+% RE
+%\newcommand\rsection{ 
+%\begin{picture}(0,0)(5,2) % (width,height)(x-offset,y-offset)
+%    \textcolor{black}{\fontsize{14}{14}\selectfont\sectionname~\thesubsection}
+%\end{picture}   
+%}
+
+% LO
+%\newcommand\lsection{ 
+%\begin{picture}(0,0)(15,2) % (width,height)(x-offset,y-offset)
+%    \textcolor{black}{\fontsize{14}{14}\selectfont\sectionname~\thesubsection}
+%\end{picture}   
+%}
 
 
 %%%%%%%%%%%%%%%%% Bas de page
@@ -366,12 +461,51 @@ breaklinks=true]{hyperref}
 
 
 
+%%%%%%%%%%%%%%%% Style des numéros de sections, figures etc.
+\setcounter{secnumdepth}{3} % Profondeur de l'arborescence (nombre de sections / sous sections possibles)
+
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+\newcommand{\thedefinition}{\thesection.\arabic{definition}}
+\renewcommand{\theexample}{\thesection.\arabic{example}}
+\renewcommand{\theremark}{\thesection.\arabic{remark}}
+\theoremstyle{definition}
+
+\renewcommand{\thechapter}{\arabic{chapter}} % Définition de la variable du numéro de chapitre
+\renewcommand{\thesection}{\arabic{section}} % Définition de la variable du numéro de la section
+%\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+%\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+
+
 %%%%%%%%%%%%%%%% Styles principaux utilisés pour les différentes parties
 \pagestyle{fancy}
 \newcommand{\myheaderlabel}{}
 
 % Illustration du layout et les différents paramètres:
 % https://tex.stackexchange.com/questions/132170/what-do-headheight-headsep-etc-do-in-the-vmargin-package
+
+% Style titre chapitre
+\fancypagestyle{titre_chapitre}{
+    \titleformat{\chapter} % \chapter
+    [block]
+    {\normalfont\huge\bfseries} % style du numéro de chapitre
+    {\thechapter}
+    {0pt} %
+    {\hspace{20pt}\Large} % style du titre de chapitre
+    \titlespacing*{\chapter}{0pt}{0pt}{25pt}
+
+	\fancyhf{}
+	\setlength{\headheight}{20pt plus4mm minus4mm}
+	\setlength{\headsep}{42pt} % hauteur entre le header et le début du texte
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhead[RO]{\rbluebandintro}
+	\fancyhead[LE]{\lbluebandintro}
+	\fancyhead[RE]{\rsection}
+	\fancyhead[LO]{\lsection}
+    %\fancyfoot[C]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
+	%\fancyfoot[LE]{\numberbaleine} % numérotation baleine pages paires
+	%\fancyfoot[RO]{\numberbaleine} % numérotation baleine pages impaires
+}
+
 
 % Style intro
 \fancypagestyle{intro}{
@@ -381,9 +515,27 @@ breaklinks=true]{hyperref}
 	\renewcommand{\headrulewidth}{0pt}
 	\fancyhead[RO]{\rbluebandintro}
 	\fancyhead[LE]{\lbluebandintro}
-	\fancyhead[RE]{\rsection}
-	\fancyhead[LO]{\lsection}
-    \fancyfoot[CE]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
+	\fancyheadoffset[loh,reh]{10mm} % horizontal offset header
+	\fancyhead[RE]{\fontsize{14}{14}{\color{bleusubsection}\selectfont\rightmark}}
+	\fancyhead[LO]{\fontsize{14}{14}{\color{bleusubsection}\selectfont\rightmark}}
+    \fancyfoot[C]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
+	\fancyfoot[LE]{\numberbaleine} % numérotation baleine pages paires
+	\fancyfoot[RO]{\numberbaleine} % numérotation baleine pages impaires
+}
+
+
+% Style discussion
+\fancypagestyle{discussion}{
+	\fancyhf{}
+	\setlength{\headheight}{20pt plus4mm minus4mm}
+	\setlength{\headsep}{42pt} % hauteur entre le header et le début du texte
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhead[RO]{\rbluebanddiscussion}
+	\fancyhead[LE]{\lbluebanddiscussion}
+	\fancyheadoffset[loh,reh]{10mm} % horizontal offset header
+	\fancyhead[RE]{\fontsize{14}{14}{\color{bleusubsection}\selectfont\rightmark}}
+	\fancyhead[LO]{\fontsize{14}{14}{\color{bleusubsection}\selectfont\rightmark}}
+    \fancyfoot[C]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
 	\fancyfoot[LE]{\numberbaleine} % numérotation baleine pages paires
 	\fancyfoot[RO]{\numberbaleine} % numérotation baleine pages impaires
 }
@@ -396,16 +548,12 @@ breaklinks=true]{hyperref}
 	\setlength{\headsep}{42pt} % hauteur entre le header et le début du texte
 	%\setlength{\lineskiplimit}{-\maxdimen} % Pour forcer l'espacement régulier des lignes
 	\renewcommand{\headrulewidth}{0pt}
-	%\fancyhead[RO]{\rblob{\chaptername~\thechapter}} % Affichage du chapitre en haut à droite sur les pages impaires
-	%\fancyhead[LE]{\lblob{\chaptername~\thechapter}} % Affichage du chapitre en haut à gauche sur les pages paires
 	\fancyhead[RO]{\rblueband}
 	\fancyhead[LE]{\lblueband}
-	\fancyhead[RE]{\rsection}
-	\fancyhead[LO]{\lsection}
-	%\fancyhead[LO]{\section} % Affichage du chapitre en haut à droite sur les pages impaires
-	%\fancyhead[RE]{\thesection} % Affichage du chapitre en haut à gauche sur les pages paires
-	
-    \fancyfoot[CE]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
+	\fancyheadoffset[loh,reh]{10mm} % horizontal offset header
+	\fancyhead[RE]{\fontsize{14}{14}{\color{bleusubsection}\selectfont\rightmark}}
+	\fancyhead[LO]{\fontsize{14}{14}{\color{bleusubsection}\selectfont\rightmark}}
+    \fancyfoot[C]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
 	\fancyfoot[LE]{\numberbaleine} % numérotation baleine pages paires
 	\fancyfoot[RO]{\numberbaleine} % numérotation baleine pages impaires
 }
@@ -432,6 +580,7 @@ breaklinks=true]{hyperref}
 	%\fancyhead[LE]{\lblob{\hphantom{\chaptername~\thechapter}}}
 	\fancyfoot[LE]{\numberbaleine}
 	\fancyfoot[RO]{\numberbaleine}
+	\fancyfoot[C]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
 }
 
 % Style abstract
@@ -440,8 +589,6 @@ breaklinks=true]{hyperref}
 	\setlength{\headheight}{20pt plus4mm minus4mm}
 	\setlength{\headsep}{42pt}
 	\renewcommand{\headrulewidth}{0pt}
-	\fancyfoot[LE]{\numberbaleine}
-	\fancyfoot[RO]{\numberbaleine}
 }
 
 % Style plain (texte basique)
@@ -450,10 +597,9 @@ breaklinks=true]{hyperref}
     \setlength{\headheight}{20pt plus4mm minus4mm}
     \setlength{\headsep}{42pt}
     \renewcommand{\headrulewidth}{0pt}
-    %\fancyhead[RO]{\rblobblue{\hphantom{\chaptername~\thechapter}}}
-    %\fancyhead[LE]{\lblob{\hphantom{\chaptername~\thechapter}}}
     \fancyfoot[LE]{\numberbaleine}
     \fancyfoot[RO]{\numberbaleine}
+    \fancyfoot[C]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
 }
 
 % Style references
@@ -462,27 +608,12 @@ breaklinks=true]{hyperref}
 	\setlength{\headheight}{20pt plus4mm minus4mm}
 	\setlength{\headsep}{42pt}
 	\renewcommand{\headrulewidth}{0pt}
-	%\fancyhead[RO]{\rblueband}
-	%\fancyhead[LE]{\lblueband}
-    \fancyfoot[CE]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
+	\fancyhead[RO]{\rbluebandreferences}
+	\fancyhead[LE]{\lbluebandreferences}
+    \fancyfoot[C]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
 	\fancyfoot[LE]{\numberbaleine} % numérotation baleine pages paires
 	\fancyfoot[RO]{\numberbaleine} % numérotation baleine pages impaires
 }
-
-
-%%%%%%%%%%%%%%%% Style des numéros de sections, figures etc.
-\setcounter{secnumdepth}{3} % Profondeur de l'arborescence (nombre de sections / sous sections possibles)
-
-\renewcommand{\theequation}{\thechapter.\arabic{equation}}
-\newcommand{\thedefinition}{\thesection.\arabic{definition}}
-\renewcommand{\theexample}{\thesection.\arabic{example}}
-\renewcommand{\theremark}{\thesection.\arabic{remark}}
-\theoremstyle{definition}
-
-\renewcommand{\thechapter}{\arabic{chapter}} % Définition de la variable du numéro de chapitre
-\renewcommand{\thesection}{\arabic{section}} % Définition de la variable du numéro de la section
-%\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
-%\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 
 
 %%%%%%%%%%%%%%%% Style des captions
@@ -521,7 +652,8 @@ breaklinks=true]{hyperref}
 
 %%%%%%%%%%%%%%%%% Abbréviations
 % For Terms and Abbreviations 
-\usepackage[acronym,section]{glossaries}
+\usepackage[acronym,section,nogroupskip]{glossaries}
+% nogroupskip => empecher les regroupements de sigles par ordre alphabétique (AA BBB C DDD F GG...)
 \makenoidxglossaries
 %\usepackage[acronym,toc=false,section=section, nogroupskip]{glossaries}
 %\makeglossaries
@@ -539,10 +671,10 @@ breaklinks=true]{hyperref}
 
 \usepackage{etoolbox}
 
-\makeatletter
+\makeatletter % Transforme le catcode de "@" de 12 à 11 (normal letters)
 \patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
 \patchcmd{\ttlh@hang}{\noindent}{}{}{}
-\makeatother
+\makeatother % Remet le catcode de "@" de 11 à 12
 
 
 %%%%%%%%%%%%%%%%% Styles abstract, statut,...

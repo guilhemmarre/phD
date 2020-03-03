@@ -4,6 +4,7 @@
 \input{./prem/packages}
 % Importation des acronymes
 \input{./prem/acronyms}
+%\glsaddall
 
 % Booléen pour afficher ou pas les commentaires de chapitres (pour la rédaction uniquement)
 \setboolean{displaytete}{false}
@@ -26,11 +27,6 @@
 
 % Début numérotation chiffres romains
 \pagenumbering{roman}
-
-% Résumé
-\pagestyle{abstract}
-\input{abstract}
-\newpage
 
 % Remerciements
 \pagestyle{preambule}
@@ -80,13 +76,15 @@
 \newpage
 
 % Termes et abbréviations
+% mise en page un peu à la mano car pas identique aux autres de base
 \newpage
+\vspace*{2cm}
 \begingroup
-\hypersetup{linkcolor=black}
+\hypersetup{linkcolor=bluecite}
 \begin{spacing}{1.5}
     \phantomsection
     \addcontentsline{toc}{section}{LISTE DES SIGLES ET ABRÉVIATIONS}
-    \printnoidxglossary[type=\acronymtype, title={ {\sffamily \Large LISTE DES SIGLES ET ABRÉVIATIONS}}\vspace*{0.5cm}]
+    \printnoidxglossary[type=\acronymtype, title=\Huge\bf\color{black}{LISTE DES ABRÉVIATIONS}\vspace*{0.5cm}]
 \end{spacing}
 \endgroup
 \newpage
@@ -108,29 +106,34 @@
 \pagestyle{intro}
 \input{chapitre0-intro}
 
+% Résultats: les articles
 \part{Résultats}
 
-\pagestyle{main}
-
+\pagestyle{titre_chapitre}
 \input{chapitre1-methode}
 
-%\input{./chapter4/ch4}
-
+\pagestyle{titre_chapitre}
+\input{chapitre2-herbiers}
 %\input{./chapter5/ch5}
 
 %\input{./chapter6/ch6}
 
-
+% Discussion générale
+\pagestyle{main}
 \part{Discussion Générale}
+\pagestyle{discussion}
+\input{chapitre6-discussion}
 
-%\input{./chapter7/ch7_discussion}
+\pagestyle{main}
+\backmatter% possiblement inutile
 
-\backmatter
+% Bibliographie
+\part*{REFERENCES BIBLIOGRAPHIQUES}
 \pagestyle{references}
 \phantomsection
 \bookmarksetup{startatroot}
 \pagestyle{references}
-\addcontentsline{toc}{section}{RÉFÉRENCES BIBLIOGRAPHIQUES}
+%\addcontentsline{toc}{section}{RÉFÉRENCES BIBLIOGRAPHIQUES}
 \bibliographystyle{apalike} % chicago
 \bibliography{references}
 \titleformat{\part}[display]
@@ -139,21 +142,94 @@
 {5pt}%
 {}%
 [\vspace{12pt}\titlerule]
+
+% Annexes
+\pagestyle{main}
 \part*{ANNEXES}
 \bookmarksetupnext{level=section}
 \pagestyle{appendix}
-\begin{appendix}
+\clearpage
+\begin{appendices}
+	%\appendixpage % rajouter une page vide avec "Annexes"
+	%\noappendicestocpagenum
+	%\addappheadtotoc
+	\chapter{Article 1: Monitoring...} %\label{annexe1-article1}
+    \includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./annexes/Marre_2019_monitoring_marine_habitats_with_PG.pdf}
+	%\input{part-1}
+	%\input{./appendix/part-2}
+	%\input{./appendix/part-3}
+	%\input{./appendix/part-4}
+\end{appendices}
+
+
+%\bookmarksetupnext{level=section}
+%\pagestyle{appendix}
+%\begin{appendix}
 
 	%\appendixpage
-	\noappendicestocpagenum
-	\appendix
+%	\noappendicestocpagenum
+%	\appendix
 	%\addappheadtotoc
+	
+	% 1er article
+	%\chapter{Article 1: Monitoring...} \label{annexe1-article1}
+	%\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./annexes/Marre_2019_monitoring_marine_habitats_with_PG.pdf}
+	
+%	\newpage
+	
+	% 2eme article
+	%\chapter{Article 2: Fine scale...} \label{annexe1-article2}
+	%\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./annexes/}
+    
+ %   \newpage
+	
+	% 3eme article
+	%\chapter{Article 3: Deep learning...} \label{annexe1-article3}
+	%\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./annexes/}
 
-	\input{vulgarisation}
+ %   \newpage
+
+%	\input{vulgarisation}
 	%\input{./appendix/diachronique}
 	%\input{./appendix/chapitre-qgis}
 	%\input{./appendix/method_ecology}
 
-\end{appendix}
+%\end{appendix}
+
+% Résumé
+\pagestyle{abstract}
+\backmatter % peut-être pas indispensable
+\input{abstract}
 
 \end{document}
+
+
+% Rappels positionnement de figures et tables
+% h= here mas o menos
+% t = top of the page
+% b = bottom of the page
+% p = Put on a special page for floats only
+% ! Override internal parameters LaTeX uses for determining "good" float positions
+% H = Places the float at precisely the location in the LaTeX code. Requires the float package. This is somewhat equivalent to "h!"
+
+% Structure image multiple
+%\begin{figure}[h]
+%\caption{Caption for this figure with two images}
+%\label{fig:image2}
+%    \begin{subfigure}{0.5\textwidth}
+%        \includegraphics[width=0.9\linewidth, height=5cm]{lion-logo} 
+%        \caption{Caption1}
+%        \label{fig:subim1}
+%    \end{subfigure}
+%    \begin{subfigure}{0.5\textwidth}
+%        \includegraphics[width=0.9\linewidth, height=5cm]{mesh}
+%        \caption{Caption 2}
+%        \label{fig:subim2}
+%    \end{subfigure}
+%\end{figure}
+
+
+% Détails tableaux
+% \hline = rajouter une ligne horitontale
+% {l c r} = gauche, centré, droite
+% { | c | c | c |} = trois colonnes centrées avec barres verticales
