@@ -9,14 +9,23 @@
 % Booléen pour afficher ou pas les commentaires de chapitres (pour la rédaction uniquement)
 \setboolean{displaytete}{false}
 
-%%% Debut du document
+
+%%%%%%%%%%%% Debut du document
 \begin{document}
 
-% Page de garde
-\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./coverpage/couverture_these_UM.pdf}
+%%% Page de garde
+\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{couverture_these_UM.pdf}
 
-% Style préambule pour la première partie
-\pagestyle{preambule}
+% Page blanche sans numérotation
+\newpage
+\clearpage
+\thispagestyle{empty}
+\hfill
+\newpage
+
+
+%%% Page de garde perso
+\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./coverpage/couverture_these_UM.pdf}
 
 % Page blanche sans numérotation
 \newpage
@@ -28,27 +37,28 @@
 % Début numérotation chiffres romains
 \pagenumbering{roman}
 
-% Remerciements
+%%% Remerciements
 \pagestyle{preambule}
-\input{acknw}
+\input{0_acknw}
 
-% Avant propos
+%%% Avant propos
 \newpage
 \begin{spacing}{1.5}
-\input{avant_propos}
+\input{0_avant_propos}
 \end{spacing}
 
-% Table des matières
+%%% Table des matières
 \newpage
-\begingroup
+%\begingroup
 \hypersetup{linkcolor=black}
-\begin{spacing}{1.5}
+%\begin{spacing}{1.5}
+% \advance\cftchapnumwidth -0.5em\relax % tentative de réduire l'espace entre numéro de chapitre et nom dans la toc...
 	\tableofcontents
-\end{spacing}
-\endgroup
+%\end{spacing}
+%\endgroup
 \newpage
 
-% Liste des figures
+%%% Liste des figures
 \newpage
 %For Removing Extra Space in List of Tables and Figures before every chapter
 \let\origaddvspace\addvspace % on stock addvspace dans origaddvspace
@@ -63,7 +73,7 @@
 \endgroup
 \newpage
 
-% Liste des tableaux
+%%% Liste des tableaux
 \newpage
 \begingroup
 \hypersetup{linkcolor=black}
@@ -75,7 +85,7 @@
 \endgroup
 \newpage
 
-% Termes et abbréviations
+%%% Termes et abbréviations
 % mise en page un peu à la mano car pas identique aux autres de base
 \newpage
 \vspace*{2cm}
@@ -84,7 +94,7 @@
 \begin{spacing}{1.5}
     \phantomsection
     \addcontentsline{toc}{section}{LISTE DES SIGLES ET ABRÉVIATIONS}
-    \printnoidxglossary[type=\acronymtype, title=\Huge\bf\color{black}{LISTE DES ABRÉVIATIONS}\vspace*{0.5cm}]
+    \printnoidxglossary[type=\acronymtype, title=\Huge\bf\color{black}{\Large LISTE DES ABRÉVIATIONS}\vspace*{0.5cm}]
 \end{spacing}
 \endgroup
 \newpage
@@ -102,48 +112,76 @@
 \pagestyle{main}
 %\pagenumbering{arabic} % On commence la numérotation en chiffres arabes
 
+
+%%% Introduction
 \part{Introduction, contexte et problématique}
-\pagestyle{intro}
-\input{chapitre0-intro}
+\pagestyle{preambule}
+\input{1_intro}
 
-% Résultats: les articles
+%%% Méthodes
+\part{Méthodes}
+\pagestyle{preambule}
+\input{2_methodologie}
+
+%%% Résultats: les articles
 \part{Résultats}
+\pagestyle{titre_chapitre}
+\input{3_chapitre1-deep}
+\clearpage
 
 \pagestyle{titre_chapitre}
-\input{chapitre1-methode}
+\input{4_chapitre2-methode}
+\clearpage
 
 \pagestyle{titre_chapitre}
-\input{chapitre2-herbiers}
-%\input{./chapter5/ch5}
+\input{5_chapitre3-herbiers}
+\clearpage
 
-%\input{./chapter6/ch6}
+%\pagestyle{titre_chapitre}
+%\input{6_chapitre4-structure}
+%\clearpage
 
-% Discussion générale
-\pagestyle{main}
+%\pagestyle{titre_chapitre}
+%\input{7_chapitre5-capferrat}
+%\clearpage
+
+%%% Discussion générale
 \part{Discussion Générale}
-\pagestyle{discussion}
-\input{chapitre6-discussion}
+\pagestyle{preambule}
+\input{8_discussion}
 
-\pagestyle{main}
-\backmatter% possiblement inutile
 
-% Bibliographie
-\part*{REFERENCES BIBLIOGRAPHIQUES}
+%%% Bibliographie
+% Première page sans la pastille bleue
+% https://tex.stackexchange.com/questions/117328/fancyhdr-does-not-apply-same-header-footer-on-chapter-and-non-chapter-pages
+
 \pagestyle{references}
+\part*{REFERENCES BIBLIOGRAPHIQUES}
+
 \phantomsection
 \bookmarksetup{startatroot}
+\clearpage
 \pagestyle{references}
 %\addcontentsline{toc}{section}{RÉFÉRENCES BIBLIOGRAPHIQUES}
+\hypersetup{linkcolor=bluecite}
 \bibliographystyle{apalike} % chicago
 \bibliography{references}
-\titleformat{\part}[display]
-{\sffamily \centering \huge \titlerule[1pt]\vspace{8pt}}%format
-{}%
-{5pt}%
-{}%
-[\vspace{12pt}\titlerule]
+%    \titleformat{\part}[display]
+%    {\normalfont\bfseries\color{bleusection}}{}{0pt}{\Huge}
+%    \titlespacing*{\part}{0pt}{-60pt}{20pt}
 
-% Annexes
+%\titleformat{\part}[display]
+%{\sffamily \centering \huge \titlerule[1pt]\vspace{8pt}}%format
+%{}%
+%{5pt}%
+%{}%
+%[\vspace{12pt}\titlerule]
+
+% Bouton retour biblio https://tex.stackexchange.com/questions/237485/how-to-go-back-to-body-after-visiting-a-reference
+
+\cleardoublepage % sinon bug affichage pastille bleue réfs à la fin
+
+%%% Annexes
 \pagestyle{main}
 \part*{ANNEXES}
 \bookmarksetupnext{level=section}
@@ -153,12 +191,12 @@
 	%\appendixpage % rajouter une page vide avec "Annexes"
 	%\noappendicestocpagenum
 	%\addappheadtotoc
-	\chapter{Article 1: Monitoring...} %\label{annexe1-article1}
-    \includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./annexes/Marre_2019_monitoring_marine_habitats_with_PG.pdf}
-	%\input{part-1}
-	%\input{./appendix/part-2}
-	%\input{./appendix/part-3}
-	%\input{./appendix/part-4}
+	
+	%\chapter{Autre publication: Holon et al., 2018} %\label{annexe1-article1}
+    %\includepdf[scale=1, pages=2-12,pagecommand={\thispagestyle{empty}}]{./annexes/Holon_2018_RF_seagrass_degradation_pressures.pdf}
+	%\input{merigeo}
+
+
 \end{appendices}
 
 
@@ -196,10 +234,10 @@
 
 %\end{appendix}
 
-% Résumé
+%%% Résumé
 \pagestyle{abstract}
 \backmatter % peut-être pas indispensable
-\input{abstract}
+\input{9_abstract}
 
 \end{document}
 
