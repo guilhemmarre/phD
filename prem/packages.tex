@@ -77,7 +77,7 @@
 bookmarksopen={true},
 pdffitwindow=true,
 colorlinks=true,
-linkcolor=black, % couleur des liens internes au texte
+linkcolor=bluecite, % couleur des liens internes au texte
 citecolor=bluecite, % couleur références dans le texte
 urlcolor=black, % couleur du texte avec lien URL
 hyperfootnotes=true,
@@ -175,7 +175,7 @@ breaklinks=true]{hyperref}
 	}
 	 %\end{center}}
 % define la loupe des ancadre
-\newcommand\monimage{\includegraphics[width =17pt]{loupe.png}}
+\newcommand\monimage{\includegraphics[width =17pt]{./misc/loupe}}
 \newcommand\mabarre{\includegraphics{barre.png}}
 
 \renewcommand\bcStyleTitre[1]{\bfseries{#1}}
@@ -380,6 +380,32 @@ breaklinks=true]{hyperref}
 }
 
 
+% Chapitre courant pour les annexes
+% RO
+\usepackage{tcolorbox}
+\newcommand\rbluebandappendix{ 
+\begin{picture}(0,0)(5,3) % (width,height)(x-offset,y-offset)
+    \begin{tcolorbox}[width=40mm, colframe=bleusubsection, colback=bleusubsection, boxsep=2mm, arc=4mm] % arc = argument de courbure, boxsep=hauteur
+    \end{tcolorbox}
+    \begin{picture}(0,0)(35,-3)
+        \textcolor{white}{\fontsize{14}{14}{\selectfont Annexes}}
+    \end{picture} 
+\end{picture}   
+}
+
+% LE
+\usepackage{tcolorbox}
+\newcommand\lbluebandappendix{ 
+\begin{picture}(0,0)(35,3) % (width,height)(x-offset,y-offset)
+    \begin{tcolorbox}[width=40mm, colframe=bleusubsection, colback=bleusubsection, boxsep=2mm, arc=4mm]
+    \end{tcolorbox}
+    \begin{picture}(0,0)(27,-3)
+        \textcolor{white}{\fontsize{14}{14}{\selectfont Annexes}}
+    \end{picture}  
+\end{picture}   
+}
+
+
 % Chapitre courant pour les autres chapitres
 % RO
 \usepackage{tcolorbox}
@@ -501,7 +527,7 @@ breaklinks=true]{hyperref}
 \renewcommand{\thesection}{\arabic{section}} % Définition de la variable du numéro de la section
 %\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 %\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
-
+%\setlength{\belowcaptionskip}{-15pt} % espace / marge après les figures => réduit aussi l'espace avant les tables...
 
 %%%%%%%%%%%%%%%% Styles principaux utilisés pour les différentes parties
 \pagestyle{fancy}
@@ -610,12 +636,16 @@ breaklinks=true]{hyperref}
 \fancypagestyle{appendix}{
 	\fancyhf{}
 	\setlength{\headheight}{20pt plus4mm minus4mm}
-	\setlength{\headsep}{42pt}
+	\setlength{\headsep}{42pt} % hauteur entre le header et le début du texte
 	\renewcommand{\headrulewidth}{0pt}
-	%\fancyhead[RO]{\rblob{\appendixname~\thechapter}}
-	%\fancyhead[LE]{\lblob{\appendixname~\thechapter}}
-	\fancyfoot[LE]{\numberbaleine}
-	\fancyfoot[RO]{\numberbaleine}
+	\fancyhead[RO]{\rbluebandappendix}
+	\fancyhead[LE]{\lbluebandappendix}
+	\fancyheadoffset[loh,reh]{10mm} % horizontal offset header
+	\fancyhead[RE]{\fontsize{14}{14}{\color{bleusubsection}\selectfont\rightmark}}
+	\fancyhead[LO]{\fontsize{14}{14}{\color{bleusubsection}\selectfont\rightmark}}
+    \fancyfoot[C]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
+	\fancyfoot[LE]{\numberbaleine} % numérotation baleine pages paires
+	\fancyfoot[RO]{\numberbaleine} % numérotation baleine pages impaires
 }
 
 % Style preambule

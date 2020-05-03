@@ -1,4 +1,13 @@
+% GENERAL TIPS
+% https://www.overleaf.com/learn/latex/bold,_italics_and_underlining#Underlined_text
+% https://fr.overleaf.com/learn/latex/Font_sizes,_families,_and_styles#Font_sizes
+% https://www.tuteurs.ens.fr/logiciels/latex/macros.html
+% http://www.malinc.se/math/latex/basiccodeen.php
+
+
 \documentclass[11pt,a4paper]{book} % This style for A4 format.
+% format thèse Montpellier:
+% http://theses-en-ligne.fr/montpellier/
 
 % Importation des packages, commandes
 \input{./prem/packages}
@@ -12,7 +21,7 @@
 
 %%%%%%%%%%%% Debut du document
 \begin{document}
-
+\renewcommand*\appendixautorefname{Annexe} % changer le nom "Appendix" en "Annexe" pours les \autoref
 %%% Page de garde
 \includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{couverture_these_UM.pdf}
 
@@ -25,7 +34,7 @@
 
 
 %%% Page de garde perso
-\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./coverpage/couverture_these_UM.pdf}
+\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{couverture_these_UM.pdf}
 
 % Page blanche sans numérotation
 \newpage
@@ -49,13 +58,13 @@
 
 %%% Table des matières
 \newpage
-%\begingroup
+\begingroup
 \hypersetup{linkcolor=black}
 %\begin{spacing}{1.5}
 % \advance\cftchapnumwidth -0.5em\relax % tentative de réduire l'espace entre numéro de chapitre et nom dans la toc...
 	\tableofcontents
 %\end{spacing}
-%\endgroup
+\endgroup
 \newpage
 
 %%% Liste des figures
@@ -154,6 +163,7 @@
 %%% Bibliographie
 % Première page sans la pastille bleue
 % https://tex.stackexchange.com/questions/117328/fancyhdr-does-not-apply-same-header-footer-on-chapter-and-non-chapter-pages
+% https://www.overleaf.com/learn/latex/Natbib_citation_styles
 
 \pagestyle{references}
 \part*{REFERENCES BIBLIOGRAPHIQUES}
@@ -189,50 +199,34 @@
 \clearpage
 \begin{appendices}
 	%\appendixpage % rajouter une page vide avec "Annexes"
-	%\noappendicestocpagenum
+	\noappendicestocpagenum
+	\appendix
 	%\addappheadtotoc
 	
-	%\chapter{Autre publication: Holon et al., 2018} %\label{annexe1-article1}
-    %\includepdf[scale=1, pages=2-12,pagecommand={\thispagestyle{empty}}]{./annexes/Holon_2018_RF_seagrass_degradation_pressures.pdf}
-	%\input{merigeo}
+	\chapter{Cahiers de la surveillance Medtrix n°3} \label{annexe-cahiers}
+    \includepdf[scale=0.85, angle=90, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Cahier_surveillance_2018_02.pdf}
+    
+    \chapter[Les dossiers d'Agropolis International]{Les dossiers d'Agropolis International: sciences marines et littorales} \label{annexe-agropolis}
+    \includepdf[scale=0.90, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Agropolis_2019_02.pdf}
+    
+    \chapter{Poster de vulgarisation - Conférence Medtrix 2018} \label{annexe-medtrix}
+    \includepdf[scale=0.85, angle=90, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/panneau-medtrix-2018.pdf}
+    
+    \chapter{Autre publication: Holon et al., 2018} \label{annexe-holon}
+    \includepdf[scale=0.95, pages=2-12,pagecommand={\thispagestyle{appendix}}]{./annexes/Holon_2018_RF_seagrass_degradation_pressures.pdf}
+    
+    \chapter{Conférence Mérigeo 18-03-2020} \label{annexe-merigeo}
+    \includepdf[scale=1, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Merigeo2020.pdf}
+    
+    %\chapter{Autres modélisations 3D par photogrammétrie} \label{annexe-modelisations}
+    %\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Modelisations.pdf}
+    
+    %\chapter{Missions de terrain avec Andromède Océanologie} \label{annexe-terrain}
+    %\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Terrain.pdf}
 
 
 \end{appendices}
 
-
-%\bookmarksetupnext{level=section}
-%\pagestyle{appendix}
-%\begin{appendix}
-
-	%\appendixpage
-%	\noappendicestocpagenum
-%	\appendix
-	%\addappheadtotoc
-	
-	% 1er article
-	%\chapter{Article 1: Monitoring...} \label{annexe1-article1}
-	%\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./annexes/Marre_2019_monitoring_marine_habitats_with_PG.pdf}
-	
-%	\newpage
-	
-	% 2eme article
-	%\chapter{Article 2: Fine scale...} \label{annexe1-article2}
-	%\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./annexes/}
-    
- %   \newpage
-	
-	% 3eme article
-	%\chapter{Article 3: Deep learning...} \label{annexe1-article3}
-	%\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{./annexes/}
-
- %   \newpage
-
-%	\input{vulgarisation}
-	%\input{./appendix/diachronique}
-	%\input{./appendix/chapitre-qgis}
-	%\input{./appendix/method_ecology}
-
-%\end{appendix}
 
 %%% Résumé
 \pagestyle{abstract}
@@ -271,3 +265,5 @@
 % \hline = rajouter une ligne horitontale
 % {l c r} = gauche, centré, droite
 % { | c | c | c |} = trois colonnes centrées avec barres verticales
+
+% https://tex.stackexchange.com/questions/202046/width-of-the-caption-of-a-figure
