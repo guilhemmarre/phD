@@ -16,6 +16,7 @@
 
 % for graphics and figures
 \usepackage{graphicx,color} % graphics and define new colors
+\usepackage{afterpage} % for landscape blank page problem
 \usepackage{tikz} % to draw graph
 \usetikzlibrary{calc}
 \newcommand*{\bord}{1mm} % pour les bords arrondis des images
@@ -119,7 +120,6 @@ breaklinks=true]{hyperref}
 
 \renewcommand{\theencadrecompteur}{\thechapter.\arabic{encadrecompteur}}
 \newcommand{\labelencadre}{Encadré~\theencadrecompteur }
-
 
 %%%%%%%%%%%%%%%% Définition des couleurs utilisées
 \definecolor{butter1}{rgb}{0.988,0.914,0.310}
@@ -255,14 +255,14 @@ breaklinks=true]{hyperref}
 \titlespacing {\subsubsection} {0pt} {12pt} {6pt}
 
 % definition d'un nouveau niveau pour le paragraphe
-% \makeatletter
-% \renewcommand{\paragraph}{\@startsection{paragraph}{4}{2ex}%
-%     {-3.25ex plus -1ex minus -0.2ex}%
-%     {1.5ex plus 0.2ex}%
-%     {\color{bleusection}\normalfont\normalsize}}
-% \makeatother
-% \renewcommand\theparagraph{\alph{paragraph}.}
-% \titlespacing {\paragraph} {0pt} {12pt} {6pt}
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{2ex}%
+     {-3.25ex plus -1ex minus -0.2ex}%
+     {1.5ex plus 0.2ex}%
+     {\color{bleusection}\normalfont\normalsize}}
+\makeatother
+\renewcommand\theparagraph{\alph{paragraph}.}
+\titlespacing {\paragraph} {0pt} {12pt} {6pt}
 
 
 % Indentation générale

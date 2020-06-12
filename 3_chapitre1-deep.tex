@@ -1,5 +1,5 @@
 % Définition du nom du chapitre
-\chapter[Deep convolutional neural networks to monitor coralligenous reefs: operationalizing biodiversity and ecological assessment]{Chapitre 1: Deep convolutional neural networks to monitor coralligenous reefs: operationalizing biodiversity and ecological assessment} \label{chapitre1-deep}
+\chapter[Deep convolutional neural networks to monitor coralligenous reefs: Operationalizing biodiversity and ecological assessment]{Chapitre 1: Deep convolutional neural networks to monitor coralligenous reefs: Operationalizing biodiversity and ecological assessment} \label{chapitre1-deep}
 
 \pagestyle{main}
 
@@ -46,7 +46,7 @@
 %\noindent Guilhem Marre, Florian Holon, Sandra Luque, Pierre Boissery et Julie Deter
 
 % NB sans indentation
-\noindent\href{XXXXXXXXXX}{\textit{Marre G, Holon F, Luque S, Boissery P and Deter J (2020) Deep convolutional neural networks to monitor coralligenous reefs: operationalizing biodiversity and ecological assessment. Ecological Informatics XXX. doi: XXXXXXXXXXXXXXXXXX}}
+\noindent\href{https://doi.org/10.1016/j.ecoinf.2020.101110}{\textit{Marre G, Holon F, Luque S, Boissery P and Deter J (2020) Deep convolutional neural networks to monitor coralligenous reefs: operationalizing biodiversity and ecological assessment. Ecological Informatics 59. doi: 10.1016/j.ecoinf.2020.101110}}
 
 \medskip
 
@@ -54,7 +54,7 @@
 Monitoring the ecological status of natural habitats is crucial to the conservation process, as it enables the implementation of efficient conservation policies. Nowadays, it is increasingly possible to automate species identification, given the availability of very large image databases and state-of-the-art computational power which makes the training of automated machine learning-based classification models an increasingly viable tool for monitoring marine habitats. Coralligenous reefs are an underwater habitat of particular importance, found in the Mediterranean. This habitat is of a similar biocomplexity to coral reefs. They have been monitored in French waters since 2010 using manually annotated photo quadrats (RECOR monitoring network). Based on the large database of annotations accumulated therein, we have trained convolutional neural networks to automatically recognise coralligenous species using the data gathered from photo quadrats. Previous studies conducted on similar habitats performed well, but were only able to consider a limited number of classes, resulting in a very coarse description of these often-complex habitats. We therefore designed a custom network based on off-the-shelf architectures which is able to discriminate between 61 classes with 72.59 \% accuracy. Our results showed that confusion errors were for the most part taxonomically coherent, showing accuracy performances of 84.47 \% when the task was simplified to 15 major categories, thereby outperforming the human accuracy previously recorded in a similar study. In light of this, we built a semi-automated tool to reject unsure results and reduce error risk, for when a higher level of accuracy is required. Finally, we used our model to assess the biodiversity and ecological status of coralligenous reefs with the \gls{cai} and the Shannon Index. Our results showed that whilst the prediction of the CAI was only moderately accurate (pearson correlation between observed and predicted CAI = 0.61), the prediction of Shannon Index was more accurate (pearson correlation = 0.74). In conclusion, it will be argued that the approach outlined by this study offers a cost and time-effective tool for the analysis of coralligenous assemblages which is suitable for integration into a large-scale monitoring network of this habitat.
 
 \noindent\textbf{Keywords}
-coralligenous reefs, deep learning, convolutional neural networks, image classification, species recognition, monitoring
+Coralligenous reefs, Deep learning, Convolutional neural networks, Image classification, Species recognition, Monitoring
 
 % Introduction
 \section{Introduction}\label{chapitre1_1}
@@ -101,7 +101,7 @@ While neural networks excel at image classification, notably regarding famous ch
 \section{Data}\label{chapitre1_3}
 
 \subsection{Sampling procedure}\label{chapitre1_3.1}
-Data were recorded over the period 2010-2018 during the RECOR monitoring network campaigns \citep{andromede-oceanologie_recor_2018}, from 198 sampling stations situated in 121 geographical locations along the French and Italian (Sardinia) Mediterranean coast. Each station was situated at a depth of between 17 and 90 meters (see \autoref{figure1.2}), and a few of these locations included several sampling stations at various depths. 
+Data were recorded over the period 2010---2018 during the RECOR monitoring network campaigns \citep{andromede-oceanologie_recor_2018}, from 198 sampling stations situated in 121 geographical locations along the French and Italian (Sardinia) Mediterranean coast. Each station was situated at a depth of between 17 and 90 m (see \autoref{figure1.2}), and a few of these locations included several sampling stations at various depths. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Figure 1.2: Localization of the 121 study sites %%%
@@ -115,7 +115,7 @@ Data were recorded over the period 2010-2018 during the RECOR monitoring network
 \end{center}
 \end{figure}
 
-All photographic quadrats were acquired by one scuba diver, using a DSLR camera in a waterproof Seacam housing, fitted with two lateral strobes, fixed on a quadrat frame for standard acquisition (2500 cm² quadrat). Different cameras were used over the period 2010-2018: Nikon D2Xs, D3, D3S and D810. The resolutions ranged between 12.1 and 36.3 megapixels (Mpx), and had a focal length between 12 - 20 mm. Thirty quadrats were analysed per station, onto which 64 points were randomly projected (see \autoref{figure1.3}) and manually labelled using the Coral Point Count 4.1 \citep{cpce_coral_2011} software \citep{deter_rapid_2012}. 
+All photographic quadrats were acquired by one scuba diver, using a DSLR camera in a waterproof Seacam housing, fitted with two lateral strobes, fixed on a quadrat frame for standard acquisition (2500 cm² quadrat). Different cameras were used over the period 2010---2018: Nikon D2Xs, D3, D3S and D810. The resolutions ranged between 12.1 and 36.3 megapixels (Mpx), and had a focal length between 12 and 20 mm. Thirty quadrats were analysed per station, onto which 64 points were randomly projected (see \autoref{figure1.3}) and manually labelled using the Coral Point Count 4.1 \citep{cpce_coral_2011} software \citep{deter_rapid_2012}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Figure 1.3: Photographic quadrat of a coralligenous reef %%%
@@ -129,7 +129,7 @@ All photographic quadrats were acquired by one scuba diver, using a DSLR camera 
 \end{figure}
 
 \subsection{Available dataset}\label{chapitre1_3.2}
-The original dataset was composed of 668 160 annotations (made by the same taxonomic expert), sampled from 10 440 digital photographic quadrats. The database included 208 different classes and showed a high inter-class imbalance; the number of annotations per class ranged from 1 to over 100 000. All classes with less than approximately 500 instances were removed from the dataset, with the exception of “erected necrosis” (105 instances) because of the ecological importance to distinguish between erected and encrusted organisms, as they are not equally sensitive to anthropogenic pressures \citep{sartoretto_integrated_2017}. Undifferentiated sediment / substrate annotations from years 2010-2012 (labelled “sludge”, “pavement”, “rubble” and “sand” for years 2013-2018) were also removed from the dataset. Consequently, final dataset included 61 classes for a total of 349 370 annotations, and was then split into a training set of 282 940 annotations, a validation set of 34 963 annotations, and a test set of 31 467 annotations. The final dataset was somewhat more evenly balanced; each class was represented by 105 to 60 218 annotations.
+The original dataset was composed of 668,160 annotations (made by the same taxonomic expert), sampled from 10,440 digital photographic quadrats. The database included 208 different classes and showed a high inter-class imbalance; the number of annotations per class ranged from 1 to over 100,000. All classes with less than approximately 500 instances were removed from the dataset, with the exception of “erected necrosis” (105 instances) because of the ecological importance to distinguish between erected and encrusted organisms, as they are not equally sensitive to anthropogenic pressures \citep{sartoretto_integrated_2017}. Undifferentiated sediment / substrate annotations from years 2010---2012 (labelled “sludge”, “pavement”, “rubble” and “sand” for years 2013---2018) were also removed from the dataset. Consequently, final dataset included 61 classes for a total of 349,370 annotations, and was then split into a training set of 282,940 annotations, a validation set of 34,963 annotations, and a test set of 31,467 annotations. The final dataset was somewhat more evenly balanced; each class was represented by 105 to 60,218 annotations.
 
 \subsection{Biological links among classes }\label{chapitre1_3.3}
 The biological relationships between classes describe a complex hierarchy at different taxonomic levels due to the impossibility / irrelevance of identifying all individuals up to species level from only visual analysis (see \autoref{figure1.4}; large circles represent the 61 classes subject to the classification task; small circles represent other classes that were not included) and intra-class variance is sometimes greater than inter-class variance (see \autoref{figure1.5}). Out of 61 classes, eight represent a coarse level of discrimination between major categories of living individuals, 31 classes may be identified at the species level (the finest level of discrimination apart from individuals), and the remaining categories were made up of 10 genders and 12 phylum or equivalent (broad categories of non-living objects). Many of these classes are closely related to each other and some classes of species belong to another gender class, themselves belonging to a major category class (see \autoref{figure1.4}).
@@ -216,11 +216,11 @@ It has been previously established that on a similar case which involved patch-b
 
 A ResNet152 was used as the baseline for classification performance. This network was initially programmed using pre-trained weights lifted from the ImageNet challenge. The top fully-connected layer was replaced with a layer using ReLU activation, followed by a dropout layer and a softmax layer, with outputs corresponding to the number of classes (here 61). Firstly, the top layer was trained alone; using features extracted from the convolutional layers, a Stochastic Gradient Descent (SGD) with a learning rate of $10^{-3}$, and weight decay rate set to $5\times10^{-4}$. The whole network was then trained with SGD; learning rate$10^{-4}$ and weight decay $10^{-6}$. Patches of \(224 \times 224\) were fed in batches of 16. Training was performed over 50 epochs until loss on the validation set stopped decreasing.
 
-The deeply learned features and the different layer outputs of the training, validation, and test sets were extracted in advance. LRs were trained and optimised using the grid search tool implemented in scikit-learn \footnote{Scikit-learn v 0.20.2} on the validation set.
+The deeply learned features and the different layer outputs of the training, validation, and test sets were extracted in advance. LRs were trained and optimised using the grid search tool implemented in scikit-learn\footnote{Scikit-learn v0.20.2} on the validation set.
 
 SGR was applied at risk levels ranging from 5 to 30 \% and resultant thresholds. Coverages and bounds for the coverage were assessed together with top-5 accuracy on the unclassified part of the dataset. SGR was trained on the validation set and applied to the training and test set with the aforementioned risk levels to assess the corresponding coverages.
 
-All architectures were implemented in Python 3.6 using the Keras \footnote{Keras v 2.2.4} library and Tensorflow \footnote{Tensorflow v 1.12.0} backend. All training and testing processes were performed on a Windows 10 workstation with 64 bits OS, 128 Gb RAM, \(2 \times\)NVidia GeForce GTX 1080 Ti 11 Gb memory and 12 cores CPU 2.9 GHz.
+All architectures were implemented in Python 3.6 using the Keras\footnote{Keras v 2.2.4} library and Tensorflow\footnote{Tensorflow v 1.12.0} backend. All training and testing processes were performed on a Windows 10 workstation with 64 bits OS, 128 Gb RAM, \(2 \times\)NVidia GeForce GTX 1080 Ti 11 Gb memory and 12 cores CPU 2.9 GHz.
 
 \subsection{Evaluation metrics}\label{chapitre1_5.2}
 
@@ -230,16 +230,19 @@ The performances of the networks were assessed with the precision, recall and F1
 
 \begin{equation}
 \text{F1-score}=2\times\frac{\text{Precision}\times\text{Recall}}{\text{Precision}+\text{Recall}}
+\label{eq1.1}
 \end{equation}
 
 With:
 
 \begin{equation}
 \text{Precision}=\frac{\text{True Positive}}{\text{True Positive}+\text{False Positive}}
+\label{eq1.2}
 \end{equation}
 
 \begin{equation}
 \text{Recall}=\frac{\text{True Positive}}{\text{True Positive}+\text{False Negative}}
+\label{eq1.3}
 \end{equation}
 
 F1 ranges from 0 to 1, 1 being a perfect classifier.
@@ -252,18 +255,21 @@ After training, network calibration was evaluated on the validation set for the 
 
 \begin{equation}
 	acc(B_m)=\frac{1}{|B_m|}\sum_{i\in B_m}\textbf{1}(\hat{y}_i=y_i)
+	\label{eq1.4}
 \end{equation}
 
 Where $B_m$ is the set of indices of the instances composing bin $m$, $\hat{y}_i$ the predicted class of instance $i$ and $y_i$ its true class. Average confidence for $B_m$ is then given by :
 
 \begin{equation}
 conf(B_m)=\frac{1}{|B_m|}\sum_{i\in B_m}\hat{p}_i
+\label{eq1.5}
 \end{equation}
 
 With $\hat{p}_i$ the outputted probability corresponding to the class $\hat{y}_i$. On top of the diagrams, Estimated Calibration Error (ECE) was calculated for the models considered with the following equation.
 
 \begin{equation}
 \text{ECE}=\sum_{m=1}^{M}\frac{|B_m|}{n}|acc(B_m)-conf(B_m)|
+\label{eq1.6}
 \end{equation}
 
 With $n$ the total number of samples in the dataset.
@@ -274,19 +280,21 @@ Coralligenous health is typically assessed using the Coralligenous Assemblage In
 
 \begin{equation}
 \text{CAI\textsubscript{i}}=\frac{1}{3}\times(\frac{1-sludge_i}{1-\min_{i}sludge_i}+\frac{majbuilders_i}{\max_{i}majbuilders_i}+\frac{bryozoans_i}{\max_{i}bryozoans_i})
+\label{eq1.7}
 \end{equation}
 
-With \textit{sludge\textsubscript{i}}, \textit{majbuilders\textsubscript{i}} and \textit{bryozoans\textsubscript{i}}, the covering percentage of sludge, major builders (13 classes out of the 61) and bryozoans (8 classes out of the 61) respectively. Minimum and maximum values of these percentages are calculated over all study sites. CAI is classically measured on 30 quadrats, 64 points per quadrat, for a total of 1920 annotated points.
+With \textit{sludge\textsubscript{i}}, \textit{majbuilders\textsubscript{i}} and \textit{bryozoans\textsubscript{i}}, the covering percentage of sludge, major builders (13 classes out of the 61) and bryozoans (8 classes out of the 61) respectively. Minimum and maximum values of these percentages are calculated over all study sites. CAI is classically measured on 30 quadrats, 64 points per quadrat, for a total of 1,920 annotated points.
 
 Biodiversity indices are numerous. This includes simpler indices, such as species richness which refers to the number of observed species, and more integrated indices which take abundance into account in order to attribute more or less weight to common or rare species \citep{magurran_measuring_2004}. One commonly used index is the Shannon index:
 
 \begin{equation}
 	S_j=-\sum_{i}p_{ij} log(p_{ij})
+	\label{eq1.8}
 \end{equation}
 
 With \textit{p\textsubscript{ij}} the prevalence of species \textit{i} among site \textit{j}.
 
-Both indices were modelled by randomly selecting 10 000 sets of 1 920 instances from the test set of 31 467 instances). For each set of 1 920, proportions of sludge / bryozoans / major builders, CAI and Shannon index were calculated on the ground truth and the automatic labels. Pearson correlations were used to analyse the fit between true and modelled indices.
+Both indices were modelled by randomly selecting 10,000 sets of 1,920 instances from the test set of 31,467 instances). For each set of 1,920, proportions of sludge / bryozoans / major builders, CAI and Shannon index were calculated on the ground truth and the automatic labels. Pearson correlations were used to analyse the fit between true and modelled indices.
 
 \section{Results}\label{chapitre1_6}
 
@@ -323,7 +331,7 @@ All validation performances consistently increased with the patch size up to 224
   \centering
   \normalsize
   %\raggedright
-  \caption{Performances of the ResNet18 on the validation and test sets for different input sizes (patch size).}
+  \caption[Performances of the ResNet18 on the validation and test sets for different input sizes]{Performances of the ResNet18 on the validation and test sets for different input sizes (patch size). In bold the best value for each metric.}
   \label{table1.2}
   %\scalebox{0.95}[0.95]{
     \begin{tabular}{*{2}{c}|*{3}{c}|*{3}{c}}
@@ -339,7 +347,7 @@ All validation performances consistently increased with the patch size up to 224
     %}
 \end{table}
 
-The ResNet18 and ResNet50 trained with the same hyperparameters  (see \autoref{table1.3}, ResNet50-128 and ResNet18-128) performed roughly equally on validation and test sets, with ResNet18-128 achieving a micro-F1 of 63.44 and ResNet50 63.89 on the test set. However, an epoch for the ResNet50 took about three times longer than ResNet18. The ResNet50 did not outperform the previously trained ResNet18 with patch size 128 and batch size 512 (see \autoref{table1.2}). The deeper architecture of the ResNet50 made it impossible to train with a batch size of 512.
+The ResNet18 and ResNet50 trained with the same hyperparameters  (see \autoref{table1.3}, ResNet50---128 and ResNet18---128) performed roughly equally on validation and test sets, with ResNet18-128 achieving a micro-F1 of 63.44 and ResNet50 63.89 on the test set. However, an epoch for the ResNet50 took about three times longer than ResNet18. The ResNet50 did not outperform the previously trained ResNet18 with patch size 128 and batch size 512 (see \autoref{table1.2}). The deeper architecture of the ResNet50 made it impossible to train with a batch size of 512.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Table 1.3: Performances of different ResNet   %%%
@@ -348,32 +356,32 @@ The ResNet18 and ResNet50 trained with the same hyperparameters  (see \autoref{t
   \centering
   \normalsize
  % \raggedright
-  \caption[Performances of different ResNet architectures on validation and test sets]{Performances of different ResNet architectures on validation and test sets. ResNetX-Y is written so that X indicates the network’s depth and Y the input size.}
+  \caption[Performances of different ResNet architectures on validation and test sets]{Performances of different ResNet architectures on validation and test sets. ResNetX---Y is written so that X indicates the network’s depth and Y the input size. In bold the best value for each metric.}
   \label{table1.3}
     \begin{tabular}{*{2}{c}|*{3}{c}|*{3}{c}}
         \toprule
         \multicolumn{2}{c}{\textbf{}}                      & \multicolumn{3}{c}{\textbf{Validation set}}                     & \multicolumn{3}{c}{\textbf{Test set}}                           \\ \midrule
         \textbf{Network} & \makecell{\textbf{Batch} \\ \textbf{size}} & \textbf{Macro-F1} & \makecell{\textbf{Top-1} \\ \textbf{accuracy}} & \textbf{Micro-F1} & \textbf{Macro-F1} & \makecell{\textbf{Top-1} \\ \textbf{accuracy}} & \textbf{Micro-F1} \\
         \midrule
-        ResNet152-224                & 16                  & 37.45             & 62.38                   & 60.46             & 38.26             & 61.71                   & 60.09             \\
-        ResNet50-128                 & 128                 & 52.04             & 64.07                   & 63.85             & 52.27             & 64.35                   & 63.89             \\
-        ResNet18-128                 & 128                 & 51.40             & 63.90                   & 63.88             & 51.62             & 63.60                   & 63.44             \\
-        ResNet18-224                 & 200                 & 54.93             & 66.70                   & 66.44             & 53.93             & 66.30                   & 65.94             \\
+        ResNet152---224                & 16                  & 37.45             & 62.38                   & 60.46             & 38.26             & 61.71                   & 60.09             \\
+        ResNet50---128                 & 128                 & 52.04             & 64.07                   & 63.85             & 52.27             & 64.35                   & 63.89             \\
+        ResNet18---128                 & 128                 & 51.40             & 63.90                   & 63.88             & 51.62             & 63.60                   & 63.44             \\
+        ResNet18---224                 & 200                 & 54.93             & 66.70                   & 66.44             & 53.93             & 66.30                   & 65.94             \\
         Ensemble                     & 128                 & \textbf{60.56}    & \textbf{70.60}          & \textbf{70.35}    & \textbf{60.38}    & \textbf{70.54}          & \textbf{70.37}    \\ \bottomrule
     \end{tabular}
 \end{table}
 
-The ensemble network performed better than any previous CNN on validation and test sets (70.35 and 70.37 micro-F1, respectively), and outperformed both the best, single ResNet18 (65.94, see \autoref{table1.2}) and the baseline ResNet152 (60.09, see \autoref{table1.3}). The latter performed worse than any other network considered here for all metrics, with macro-F1 (37.45 and 38.26 on validation and test sets, respectively) lower than micro scores (micro-F1 of 60.46 and 60.09). With the sole exception of CNN for patch size 64 × 64, validation and test performances were very similar for all trained models, and macro metrics were consistently lower than micro metrics.
+The ensemble network performed better than any previous CNN on validation and test sets (70.35 and 70.37 micro-F1, respectively), and outperformed both the best, single ResNet18 (65.94, see \autoref{table1.2}) and the baseline ResNet152 (60.09, see \autoref{table1.3}). The latter performed worse than any other network considered here for all metrics, with macro-F1 (37.45 and 38.26 on validation and test sets, respectively) lower than micro scores (micro-F1 of 60.46 and 60.09). With the sole exception of CNN for patch size 64 \(\times\) 64, validation and test performances were very similar for all trained models, and macro metrics were consistently lower than micro metrics.
 
 \subsubsection{Ensemble network with logistic regression}\label{chapitre1_6.2.2}
-LRs were trained using l2 penalty and multinomial loss, with the following parameters defined with grid search on the validation set: C = 0.01 and saga solver . Results were compared with each other and with the ensemble alone (see \autoref{table1.4}).
+LRs were trained using l2 penalty and multinomial loss, with the following parameters defined with grid search on the validation set: C = 0.01 and saga solver\footnote{Grid search : C = \{10-4 ; 10\textsuperscript{-3} ; 10\textsuperscript{-2} ; 10\textsuperscript{-1} ;1 ;10 ;100\} ; solver = \{sag ; saga ; lbfgs\}}. Results were compared with each other and with the ensemble alone (see \autoref{table1.4}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Table 1.4: Performances of logistic regression   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[htbp]
     \centering
-      \caption[Performances of logistic regression applied to different layers of the ensemble network, on validation and test sets]{Performances of logistic regression applied to different layers of the ensemble network, on validation and test sets. None: ensemble alone, logits: features of the last layer before softmax, fc256: features from the penultimate layer; fc512: features from the first layer of the Multi-Layer Perceptron (MLP); GAP: features from the concatenation of global average pooling before the MLP.}
+      \caption[Performances of logistic regression applied to different layers of the ensemble network, on validation and test sets]{Performances of logistic regression applied to different layers of the ensemble network, on validation and test sets. None: ensemble alone, logits: features of the last layer before softmax, fc256: features from the penultimate layer; fc512: features from the first layer of the Multi-Layer Perceptron (MLP); GAP: features from the concatenation of global average pooling before the MLP. In bold the best value for each metric.}
       \label{table1.4}
     \begin{tabular}{*{1}{c}|*{3}{c}|*{3}{c}}
     	\toprule
@@ -391,7 +399,7 @@ LRs were trained using l2 penalty and multinomial loss, with the following param
     \end{tabular}
 \end{table}
 
-The LR on the logits and features from the penultimate layer (fc256) resulted in an improvement in both macro and micro metrics scores, compared with the ensemble network alone (see “None”, \autoref{table1.4}). On the test set, micro-F1 increased from 70.37 to 71.50 using logits, and 72.02 using the penultimate layer, while macro-F1 increased from 60.38 to 61.69 and 62.69 respectively. The use of both layers’ features (see “fc256 + logits”, \autoref{table1.4}) resulted in a marginal improvement (63.91 for macro-F1 and 72.20 for micro-F1 on the test set). Using features from the first layer of the MLP (fc512), or the concatenation of global average pooling outputs, resulted in consistent degradation of all metrics on the validation set, and results were even worse for the test set. Using the best model, out of the 61 classes, 11 showed an accuracy > 80 \% (\textit{“Aplysina cavernicola”}, “Crevice”, \textit{“Corallium rubrum”}, \textit{“Crambe tailliezi”}, \textit{“Eunicella cavolini”}, \textit{“Hexadella racovitzai”}, \textit{“Leptopsammia pruvoti”}, \textit{“Mesophyllum alternans”}, \textit{“Parazoanthus axinellae”}, \textit{“Paramuricea clavata”}, \textit{“Erected Peyssonnelia sp.”}) and 12 had an accuracy comprised between 70 \% and 80 \% (“Sand”, \textit{“Eunicella singularis”}, “Filamentous green algae”, “Filamentous red algae”, \textit{”Flabellia petiolata”}, \textit{“Haliclona sp.”}, \textit{“Halimeda tuna”}, \textit{“Palmophyllum crassum”}, \textit{“Encrusting Peyssonnelia sp.”}, \textit{“Pentapora fascialis”}, \textit{“Phorbas tenacior”}, \textit{“Pleraplysilla spinifera”}).
+The LR on the logits and features from the penultimate layer (fc256) resulted in an improvement in both macro and micro metrics scores, compared with the ensemble network alone (see “None”, \autoref{table1.4}). On the test set, micro-F1 increased from 70.37 to 71.50 using logits, and 72.02 using the penultimate layer, while macro-F1 increased from 60.38 to 61.69 and 62.69 respectively. The use of both layers’ features (see “fc256 + logits”, \autoref{table1.4}) resulted in a marginal improvement (63.91 for macro-F1 and 72.20 for micro-F1 on the test set). Using features from the first layer of the MLP (fc512), or the concatenation of global average pooling outputs, resulted in consistent degradation of all metrics on the validation set, and results were even worse for the test set. Using the best model, out of the 61 classes, 11 showed an accuracy >80 \% (\textit{“Aplysina cavernicola”}, “Crevice”, \textit{“Corallium rubrum”}, \textit{“Crambe tailliezi”}, \textit{“Eunicella cavolini”}, \textit{“Hexadella racovitzai”}, \textit{“Leptopsammia pruvoti”}, \textit{“Mesophyllum alternans”}, \textit{“Parazoanthus axinellae”}, \textit{“Paramuricea clavata”}, \textit{“Erected Peyssonnelia sp.”}) and 12 had an accuracy comprised between 70 \% and 80 \% (“Sand”, \textit{“Eunicella singularis”}, “Filamentous green algae”, “Filamentous red algae”, \textit{”Flabellia petiolata”}, \textit{“Haliclona sp.”}, \textit{“Halimeda tuna”}, \textit{“Palmophyllum crassum”}, \textit{“Encrusting Peyssonnelia sp.”}, \textit{“Pentapora fascialis”}, \textit{“Phorbas tenacior”}, \textit{“Pleraplysilla spinifera”}).
 
 \subsection{Post-processing}\label{chapitre1_6.3}
 
@@ -509,9 +517,9 @@ Predicted CAI was moderately correlated with the ground truth (see \autoref{figu
 Although our dataset was large enough to train a CNN from scratch, it was limited to punctual annotations (at the pixel level) of photo quadrats, therefore it required patch-wise classification. The patch size was crucial (see \autoref{table1.2}), as it reflects a trade-off between local and contextual information. If the patch size is too small, it contains insufficient information and most probably fails to capture whole individuals; if it is too large, the context scrambles the signature of the central information, confusing the algorithm. The patch size \(64 \times 64\) pixels performed the worst out of all the metrics; the large differences between validation and test performances was indicative of its poor capacity for generalization. A patch size of \(224 \times 224\) gave the highest micro-F1 on the test set (65.94). This patch size included enough contextual noise to regularize overfitting, and it enabled better generalization. While the single RestNet18 based on the patch size \(224 \times 224\) obtained the best accuracy, our ensemble network, which was based on the four tested patch sizes and followed the feature extraction scheme of the local-SPP \citep{mahmood_coral_2016}, improved classification performances by 4.43 points (see \autoref{table1.3}). The biggest difference between our network and the original version of the local-SPP lies in the fact that we concatenated the four 512-dimension feature vectors, instead of the max-pooling layer, which enabled the information contributed by each patch size to be processed by the consecutive MLP without loss.
 
 \subsection{Tuning the architecture}\label{chapitre1_7.2}
-The training procedure of ResNet18, notably the batch size parameter, had a great impact on classification performance. This was indicated by the difference in micro-F1 values produced by a ResNet18 trained with batch size 128 (63.44; see \autoref{table1.3}) and a ResNet18 train with batch size 512 (65.54; see \autoref{table1.2}). These results provide a different perspective than the conclusions drawn by previous studies \citep{masters_revisiting_2018, mishkin_systematic_2016} where the use of small or even mini-batches enhanced performances. This could be explained by the high imbalance between classes and the fine-grained nature of the classification task. Larger batches may therefore be more representative of the intra-class variability which in turn allows the network to focus on inter-class variance. It will be asserted that our best ResNet18 (ResNet18-224; 65.94 micro-F1, see \autoref{table1.3}) easily outperformed deeper network architectures, whether trained from scratch with a smaller batch size (ResNet50-128; micro-F1 63.89), or pre-trained with fine-tuned weights (ResNet152-224; 60.09 micro-F1) according to standard procedures \citep{king_comparison_2018}. Our results support the findings of a recent study which advocated the use of carefully tailored training strategies and architecture enhancements for vastly improving performances, even with transfer learning \citep{he_bag_2019}. It remains to be said that further modifying the layers could further improve performances, for example altering the order of convolutions in residual blocks \citep{he_bag_2019} or widening the network \citep{zagoruyko_wide_2016}.
+The training procedure of ResNet18, notably the batch size parameter, had a great impact on classification performance. This was indicated by the difference in micro-F1 values produced by a ResNet18 trained with batch size 128 (63.44; see \autoref{table1.3}) and a ResNet18 train with batch size 512 (65.54; see \autoref{table1.2}). These results provide a different perspective than the conclusions drawn by previous studies \citep{masters_revisiting_2018, mishkin_systematic_2016} where the use of small or even mini-batches enhanced performances. This could be explained by the high imbalance between classes and the fine-grained nature of the classification task. Larger batches may therefore be more representative of the intra-class variability which in turn allows the network to focus on inter-class variance. It will be asserted that our best ResNet18 (ResNet18---224; 65.94 micro-F1, see \autoref{table1.3}) easily outperformed deeper network architectures, whether trained from scratch with a smaller batch size (ResNet50---128; micro-F1 63.89), or pre-trained with fine-tuned weights (ResNet152---224; 60.09 micro-F1) according to standard procedures \citep{king_comparison_2018}. Our results support the findings of a recent study which advocated the use of carefully tailored training strategies and architecture enhancements for vastly improving performances, even with transfer learning \citep{he_bag_2019}. It remains to be said that further modifying the layers could further improve performances, for example altering the order of convolutions in residual blocks \citep{he_bag_2019} or widening the network \citep{zagoruyko_wide_2016}.
 
-Training a LR on the penultimate and final layers of the ensemble network improved classification performances (72.20 vs 70.37 micro-F1, see \autoref{table1.4}). LRs derived from the results of the concatenation of the GAP or the first fully connected layer (fc512) greatly decreased performances on the validation set and led to a further decrease in performance on the test set, indicating that the LR massively overfitted the training set. It is widely known that using a CNN in combination with other machine learning algorithms can improve classification accuracy \citep{donahue_decaf:_2014, gao_combining_2017, huang_densely_2017, li_visual_2016}, but additionally applying them to the logits of a neural network is further beneficial to the use of a selective classification framework, LR is a linear classifier that uses negative log-likelihood (NLL) as a loss function for a multiclass problem. When feeding the logits taken from the last layer of the ensemble network into a softmax, it performs linear scaling to optimise the NLL in a similar way that temperature scaling can be used for network calibration \citep{guo_calibration_2017}. This explains why applying LR to the last two layers of the ensemble network improved calibration (ECE = 3.60 \%) while simultaneously improving performance. The fact that ResNet152 was the worst calibrated (ECE = 6.21 \%) is coherent with previous studies’ findings, which noted that the depth and width of the network negatively impact calibration \citep{guo_calibration_2017}. This also applies to the ensemble network (ECE = 4.40 \%), which was slightly deeper and considerably wider than a single ResNet18-224 (ECE = 4.01 \%).
+Training a LR on the penultimate and final layers of the ensemble network improved classification performances (72.20 vs 70.37 micro-F1, see \autoref{table1.4}). LRs derived from the results of the concatenation of the GAP or the first fully connected layer (fc512) greatly decreased performances on the validation set and led to a further decrease in performance on the test set, indicating that the LR massively overfitted the training set. It is widely known that using a CNN in combination with other machine learning algorithms can improve classification accuracy \citep{donahue_decaf:_2014, gao_combining_2017, huang_densely_2017, li_visual_2016}, but additionally applying them to the logits of a neural network is further beneficial to the use of a selective classification framework, LR is a linear classifier that uses negative log-likelihood (NLL) as a loss function for a multiclass problem. When feeding the logits taken from the last layer of the ensemble network into a softmax, it performs linear scaling to optimise the NLL in a similar way that temperature scaling can be used for network calibration \citep{guo_calibration_2017}. This explains why applying LR to the last two layers of the ensemble network improved calibration (ECE = 3.60 \%) while simultaneously improving performance. The fact that ResNet152 was the worst calibrated (ECE = 6.21 \%) is coherent with previous studies’ findings, which noted that the depth and width of the network negatively impact calibration \citep{guo_calibration_2017}. This also applies to the ensemble network (ECE = 4.40 \%), which was slightly deeper and considerably wider than a single ResNet18---224 (ECE = 4.01 \%).
 
 \subsection{Post-processing}\label{chapitre1_7.3}
 Selective classification requires well-calibrated networks because the reliability of the output is assessed in order to decide whether or not to reject the prediction. The SGR algorithm provides accurate thresholds which allow the user to filter predictions which fit with the required level of error \citep{geifman_selective_2017}. Top-5 accuracy was consistently above 80 \% on the rejected part on the test set, regardless of desired risk specified for input into the SGR algorithm. Said top-5 accuracy could then be used to create a tool to enable an expert to quickly annotate the rejected data. By establishing a trade-off between accuracy and time-effectiveness, this simple method could be useful for mitigating the limited accuracy of human annotation (which in turn affects performance in the classification task), and is appropriate considering the fine-grained nature of the classification task.
@@ -521,7 +529,7 @@ Further customising the network, we merged the output classes by gender and majo
 Finally, it should be noted that, by merging the outputs to 15 major categories, the accuracy scores achieved when considering the relative abundance of classes in the dataset (i.e. micro metrics) outperformed the human accuracy observed on a similar problem conducted on 20 coral reef classes at the gender level \citep{beijbom_towards_2015}. If no conclusion can be directly drawn from this observation, it nevertheless represents a significant achievement given the high level of similarity between coral and coralligenous habitats \citep{bianchi_biocostruzione_2001}, and the fact that some major categories defined here were included in the task presented by Beijbom et al. The annotator accuracy also gives a general indication of the noisiness of the annotated dataset used for training and testing. In this study, the annotations were performed only once by a single annotator, which means that our dataset includes errors learned by our networks. This explains part of the irreducible error made by our networks, as previous studies have shown how this impedes network efficiency \citep{mishkin_systematic_2016}. However, results per class showed that scarcity of data, and confusion between similar species were the greatest source of error. 
 
 \subsection{On the use of CNNs in a large scale monotoring of coralligenous reefs}\label{chapitre1_7.4}
-Monitoring coralligenous reefs involves long, physically demanding dives at great depths below sea level (often 40 – 80 m deep), and many hours spent on the task of manually identifying species in photo quadrats \citep{deter_rapid_2012}. The use of well-trained CNNs (particularly those which operate within a selective classification framework) can greatly aid this process; it makes the automatic annotation of vast quantities of data possible, while ensuring a guaranteed accuracy. At the level of detail “major category” (level 3, see \autoref{table1.6}), which can suffice for a quick evaluation of the diversity, our CNN performance even exceeded the human accuracy measured on a similar dataset when considering the relative abundance of classes in the dataset (i.e. micro metrics; see Table 1). In order to further refine the classification and obtain a more detailed assessment that includes rare or invasive species, this problem could be addressed by the use of few-shot or even zero-shot learning \citep{liu_generalized_2018}.
+Monitoring coralligenous reefs involves long, physically demanding dives at great depths below sea level (often 40---80 m deep), and many hours spent on the task of manually identifying species in photo quadrats \citep{deter_rapid_2012}. The use of well-trained CNNs (particularly those which operate within a selective classification framework) can greatly aid this process; it makes the automatic annotation of vast quantities of data possible, while ensuring a guaranteed accuracy. At the level of detail “major category” (level 3, see \autoref{table1.6}), which can suffice for a quick evaluation of the diversity, our CNN performance even exceeded the human accuracy measured on a similar dataset when considering the relative abundance of classes in the dataset (i.e. micro metrics; see Table 1). In order to further refine the classification and obtain a more detailed assessment that includes rare or invasive species, this problem could be addressed by the use of few-shot or even zero-shot learning \citep{liu_generalized_2018}.
 
 The predicted percentages of major builders was fairly accurate, with a high correlation between observed and predicted values (pearson correlation: 0.82; see \autoref{figure1.9}). The predictions of sludge and bryozoans on the other hand were altogether less accurate, with a weaker correlation between observations and predictions (pearson correlation: 0.54 and 0.61, respectively). The various substrates were divided into four different categories: “sludge”, “pavement”, “rubble”, and “sand”. Given the similarity of the substrates, they are subject to the arbitrary interpretation of the expert and are therefore fairly likely to contain annotator errors. Consequently, 11 \% of “sludge” instances were classified as “sand”, and a further 2 \% was classified as “rubble”. What is more, “sludge” instances often corresponded to very small patches of sludge atop more easily recognizable classes, which confused the algorithm on a number of occasions. For example, 7 \% of sludge instances were confused with Mesophyllum alternans, and a further 5 \% with encrusting \textit{Peyssonnelia sp.} – these are two different encrusting, red macroalgae. While the classification of “encrusting red macroalgae” at level 3 clustering was highly accurate (92 \% , see \autoref{figure1.8}), it should be noted that “encrusting bryozoan” and “erected bryozoan” were sometimes confused with “encrusting red macroalgae”, “sponge” and substrate. All of these factors affected CAI predictions (pearson correlation: 0.61; see Figure 10) which are based on proportions of major builders, bryozoans and sludge. However, assessment of biodiversity was more accurate; the correlation between predicted and observed Shannon index values was 0.74. These results suggest that our method can be used to quickly assess the diversity of multiple sites within a large-scale monitoring network.
 
