@@ -1,5 +1,5 @@
 % Définition du nom du chapitre
-\chapter[Fine-scale automatic mapping of living \textit{Posidonia oceanica} seagrass beds with underwater photogrammetry]{Chapitre 3: Fine-scale automatic mapping of living \textit{Posidonia oceanica} seagrass beds with underwater photogrammetry} \label{chapitre3-herbiers}
+\chapter[Fine-scale automatic mapping of living \textit{Posidonia oceanica} seagrass beds with underwater photogrammetry]{Chapitre 3: Fine-scale automatic mapping of living\\ \textit{Posidonia oceanica} seagrass beds with underwater\\ photogrammetry} \label{chapitre3-herbiers}
 
 \pagestyle{main}
 
@@ -8,13 +8,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{tikzpicture}
   \def\ig{%
-   \includegraphics[width=\linewidth,keepaspectratio]{./5_chapitre3/cover.jpg}}
+   \includegraphics[width=\linewidth,keepaspectratio]{./5_chapitre3/cover_herbiers}}
  \node [inner sep=0pt](mypicture) at (0,0) {\phantom{\ig}};
  \clip[rounded corners=5mm] ($(mypicture.south west)+(\bord,\bord)$) rectangle ($(mypicture.north east)-(\bord,\bord)$);
  \node[inner sep=0pt](mypicture) at (0,0) {\ig};
 \end{tikzpicture}
 
 % Bullet points du début de chapitre
+\setlength{\fboxsep}{8pt}
+\setlength{\fboxrule}{0pt}
 \begin{center}
 \begin{colbox}{resume}
   \vspace{-2pt}
@@ -40,7 +42,10 @@
 
 \clearpage
 
-\noindent\textbf{Fine-scale automatic mapping of living \textit{Posidonia oceanica} seagrass beds with underwater photogrammetry}
+\fontsize{14}{14}\noindent\textbf{Fine-scale automatic mapping of living \textit{Posidonia oceanica} seagrass beds with underwater photogrammetry}
+
+\normalsize
+\medskip
 
 % Auteurs
 %\noindent Guilhem Marre, Florian Holon, Sandra Luque, Pierre Boissery et Julie Deter
@@ -53,8 +58,12 @@
 \noindent\textbf{Abstract}
 The Mediterranean seagrass \textit{Posidonia oceanica}, which provides highly valuable ecosystem services, is subject to increasing anthropogenic pressures, causing habitat loss or fragmentation. Whilst airborne images and acoustic data can be used for monitoring seagrass coverage at a macro-scale and over long time periods, monitoring its health in the short-term requires precision mapping in order to assess current regression / progression of individual meadows. However, current fine-scale underwater techniques in the field are imprecise and time demanding. We propose an automatic classification approach based on underwater photogrammetry for an operational, cost and time effective fine-scale monitoring method. The method uses a property of the sparse cloud generated during bundle adjustment --- the reconstruction uncertainty --- to map seagrass patches. The mean precision, recall and F1 score of the method over 21 study sites with different morphologies were: 0.79, 0.91 and 0.84, respectively. However, the fragmentation level of the meadows had a significant negative effect on classification performances. The temporal monitoring of three sites using this method proved its operability and showed a positive evolution index of the corresponding meadows over a period of three years. This method is generalizable for most encountered configurations and can be integrated in a large monitoring system, as it enables the production of numerous seagrass maps over a short period of time. Moreover, our methodology could be generalized and applied in the study of other submerged aquatic vegetation, by adjusting the method’s parameters.
 
+\medskip
+
 \noindent\textbf{Keywords}
 \textit{Posidonia oceanica}, Underwater photogrammetry, Benthic habitat mapping, Monitoring, Reconstruction uncertainty, Submerged aquatic vegetation
+
+\newpage
 
 % Introduction
 \section{Introduction}\label{chapitre3_1}
@@ -71,7 +80,7 @@ In this study, we tested an operational method for the centimetric mapping of \t
 \section{Materials and methods}\label{chapitre3_2}
 
 \subsection{Study sites}
-Data were collected in June 2016, 2017 and 2019 along the French Mediterranean coast during the TEMPO monitoring network campaigns \citep{andromede-oceanologie_tempo_2020}. TEMPO is the largest French initiative for monitoring the ecological status of \textit{Posidonia oceanica} along the French Mediterranean coast, from Spain to Italy and including the Corsican coast (see \autoref{figure3.1}). The network includes data collection for 47 sites located at 15 m depth (e.g. seagrass density and leaf length, grazing, fish abundance, filtering organisms) and for 53 sites located at the lower limits of seagrass meadows (e.g. surface area evolution, density, shoot heaving, fish abundance). The data are collected and analysed in order to assess the evolution of \textit{P. oceanica}’s ecological status and to investigate the correlations with environmental conditions and anthropogenic pressures to support decision-makers in their establishment of conservation policies.
+Data were collected in June 2016, 2017 and 2019 along the French Mediterranean coast during the TEMPO monitoring network campaigns \citep{andromede-oceanologie_tempo_2020}. TEMPO is the largest French initiative for monitoring the ecological status of \textit{Posidonia oceanica} along the French Mediterranean coast, from Spain to Italy and including the Corsican coast (\autoref{figure3.1}). The network includes data collection for 47 sites located at 15 m depth (e.g. seagrass density and leaf length, grazing, fish abundance, filtering organisms) and for 53 sites located at the lower limits of seagrass meadows (e.g. surface area evolution, density, shoot heaving, fish abundance). The data are collected and analysed in order to assess the evolution of \textit{P. oceanica}’s ecological status and to investigate the correlations with environmental conditions and anthropogenic pressures to support decision-makers in their establishment of conservation policies.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,7 +104,7 @@ We used the data from the lower limits of 21 \textit{P. oceanica} beds located a
   \centering
   \normalsize
  % \raggedright
-  \caption[Properties of the 21 study sites]{Properties of the 21 study sites. Fragmentation = perimeter / surface area of all patches. The shoot density was measured in-situ by hand within three 0.2 x 0.2 m quadrats and averaged}
+  \caption[Properties of the 21 study sites]{Properties of the 21 study sites. Fragmentation = perimeter / surface area of all patches. The shoot density was measured in-situ by hand within three 0.2 $\times$ 0.2 m quadrats and averaged}
   \label{table3.1}
     \begin{tabular}{*{6}{c}}
         \toprule
@@ -370,8 +379,6 @@ EI was positive for the 3 sites, with values ranging from 8---46 \%; progression
 	\label{figure3.6}
 \end{center}
 \end{figure}
-
-\newpage
 
 % Discussion
 \section{Discussion}\label{chapitre3_4}

@@ -10,10 +10,7 @@
 % http://theses-en-ligne.fr/montpellier/
 
 % Importation des packages, commandes
-\input{./prem/packages}
-% Importation des acronymes
-\input{./prem/acronyms}
-%\glsaddall
+\input{packages}
 
 % Booléen pour afficher ou pas les commentaires de chapitres (pour la rédaction uniquement)
 \setboolean{displaytete}{false}
@@ -22,6 +19,7 @@
 %%%%%%%%%%%% Debut du document
 \begin{document}
 \renewcommand*\appendixautorefname{Annexe} % changer le nom "Appendix" en "Annexe" pours les \autoref
+\renewcommand*\chapterautorefname{Chapitre} % changer le nom "Chapter" en "Chapitre" pours les \autoref
 %%% Page de garde
 \includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{couverture_these_UM.pdf}
 
@@ -34,7 +32,7 @@
 
 
 %%% Page de garde perso
-\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{couverture_these_UM.pdf}
+\includepdf[scale=1.02, pages=-,pagecommand={\thispagestyle{empty}}]{couverture_these_perso.pdf}
 
 % Page blanche sans numérotation
 \newpage
@@ -44,7 +42,7 @@
 \newpage
 
 % Début numérotation chiffres romains
-\pagenumbering{roman}
+\pagenumbering{arabic} % roman
 
 %%% Remerciements
 \pagestyle{preambule}
@@ -55,6 +53,9 @@
 \begin{spacing}{1.5}
 \input{0_avant_propos}
 \end{spacing}
+
+% chiffres clés de la thèse
+\includepdf[scale=0.85, pages=-,pagecommand={\thispagestyle{preambule}}]{./images/chiffres_cles.pdf}
 
 %%% Table des matières
 \newpage
@@ -94,43 +95,24 @@
 \endgroup
 \newpage
 
-%%% Termes et abbréviations
-% mise en page un peu à la mano car pas identique aux autres de base
-\newpage
-\vspace*{2cm}
-\begingroup
-\hypersetup{linkcolor=bluecite}
-\begin{spacing}{1.5}
-    \phantomsection
-    \addcontentsline{toc}{section}{LISTE DES SIGLES ET ABRÉVIATIONS}
-    \printnoidxglossary[type=\acronymtype, title=\Huge\bf\color{black}{\Large LISTE DES ABRÉVIATIONS}\vspace*{0.5cm}]
-\end{spacing}
-\endgroup
-\newpage
-
-%\clearpage
-%\pagestyle{preambule}
-%\addcontentsline{toc}{section}{LISTE DES SIGLES ET ABRÉVIATIONS}
-%\printnoidxglossary[type=\acronymtype, title={\centerline { {\sffamily \Large LISTE DES SIGLES ET ABRÉVIATIONS}}}\vspace*{0.5cm}]
-
 
 % Restauration de la valeur originale de addvspace
 \renewcommand{\addvspace}[1]{\origaddvspace{#1}}
 
-\mainmatter % partie principale du bouquin
+\mainmatter % partie principale du bouquin % Sinon la numérotation redémarre de là
 \pagestyle{main}
 %\pagenumbering{arabic} % On commence la numérotation en chiffres arabes
 
 
 %%% Introduction
-\part{Introduction, contexte et problématique}
+\part{Introduction générale}
 \pagestyle{preambule}
 \input{1_intro}
 
 %%% Méthodes
 \part{Méthodes}
 \pagestyle{preambule}
-\input{2_methodologie}
+\input{2_methodes}
 
 %%% Résultats: les articles
 \part{Résultats}
@@ -146,18 +128,14 @@
 \input{5_chapitre3-herbiers}
 \clearpage
 
-%\pagestyle{titre_chapitre}
-%\input{6_chapitre4-structure}
-%\clearpage
-
-%\pagestyle{titre_chapitre}
-%\input{7_chapitre5-capferrat}
-%\clearpage
+\pagestyle{titre_chapitre}
+\input{6_chapitre4-structure}
+\clearpage
 
 %%% Discussion générale
 \part{Discussion Générale}
 \pagestyle{preambule}
-\input{8_discussion}
+\input{7_discussion}
 
 
 %%% Bibliographie
@@ -203,27 +181,37 @@
 	\appendix
 	%\addappheadtotoc
 	
-	\chapter{Cahiers de la surveillance Medtrix n°3} \label{annexe-cahiers}
+	\chapter{Cahiers de la surveillance Medtrix n°3} 
+	\label{annexe-cahiers}
     \includepdf[scale=0.85, angle=90, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Cahier_surveillance_2018_02.pdf}
     
-    \chapter[Les dossiers d'Agropolis International]{Les dossiers d'Agropolis International: sciences marines et littorales} \label{annexe-agropolis}
+    \chapter[Les dossiers d'Agropolis International]{Les dossiers d'Agropolis International: sciences marines et littorales}
+    \label{annexe-agropolis}
     \includepdf[scale=0.90, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Agropolis_2019_02.pdf}
     
-    \chapter{Poster de vulgarisation - Conférence Medtrix 2018} \label{annexe-medtrix}
+    \chapter{Poster de vulgarisation - Conférence Medtrix 2018} 
+    \label{annexe-medtrix}
     \includepdf[scale=0.85, angle=90, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/panneau-medtrix-2018.pdf}
     
-    \chapter{Autre publication: Holon et al., 2018} \label{annexe-holon}
+    \chapter{Autre publication: Holon et al., 2018} 
+    \label{annexe-holon}
     \includepdf[scale=0.95, pages=2-12,pagecommand={\thispagestyle{appendix}}]{./annexes/Holon_2018_RF_seagrass_degradation_pressures.pdf}
     
-    \chapter{Conférence Mérigeo 18-03-2020} \label{annexe-merigeo}
+    \chapter{Conférence Mérigeo 18-03-2020 (décalé à Novembre 2020)} 
+    \label{annexe-merigeo}
     \includepdf[scale=1, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Merigeo2020.pdf}
     
-    %\chapter{Autres modélisations 3D par photogrammétrie} \label{annexe-modelisations}
-    %\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Modelisations.pdf}
+    \chapter{Exemples de modélisations 3D réalisées dans le cadre des missions d'Andromède Océanologie} 
+    \label{annexe-modelisations}
+    \includepdf[scale=1, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Modelisations.pdf}
     
-    %\chapter{Missions de terrain avec Andromède Océanologie} \label{annexe-terrain}
-    %\includepdf[scale=1, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Terrain.pdf}
-
+    \chapter{Missions de terrain avec Andromède Océanologie} 
+    \label{annexe-terrain}
+    \includepdf[scale=1, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/Terrain.pdf}
+    
+    \chapter[Tableau des correspondances codes-espèces du coralligène]{Tableau des correspondances codes-espèces du coralligène utilisés dans le manuscrit}
+    \label{annexe-species}
+    \includepdf[scale=1, pages=-,pagecommand={\thispagestyle{appendix}}]{./annexes/BDD_species.pdf}
 
 \end{appendices}
 
@@ -231,7 +219,7 @@
 %%% Résumé
 \pagestyle{abstract}
 \backmatter % peut-être pas indispensable
-\input{9_abstract}
+\input{8_abstract}
 
 \end{document}
 
