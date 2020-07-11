@@ -99,7 +99,14 @@
 % Restauration de la valeur originale de addvspace
 \renewcommand{\addvspace}[1]{\origaddvspace{#1}}
 
-\mainmatter % partie principale du bouquin % Sinon la numérotation redémarre de là
+% Page blanche sans numérotation
+\newpage
+\clearpage
+\thispagestyle{empty}
+\hfill
+\newpage
+
+%\mainmatter % partie principale du bouquin % Sinon la numérotation redémarre de là
 \pagestyle{main}
 %\pagenumbering{arabic} % On commence la numérotation en chiffres arabes
 
