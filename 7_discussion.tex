@@ -1,8 +1,7 @@
-%\chapter*{} \label{chapitre6-discussion} % "*" pour ne pas afficher le nom de chapitre
-\setcounter{section}{0} % 
-%\renewcommand*{\theHsection}{chY.\the\value{section}} % version pour la partie méthodes
+% Bug ancrages pdf à cause du bricolage entre PARTIES et chapitres avec l'intro, méthodes et discussion...
 % See https://tex.stackexchange.com/questions/71162/reset-section-numbering-between-unnumbered-chapters
-\renewcommand*{\theHsection}{\theHchapter.\the\value{section}} % différent de l'intro et méthodes, allez savoir pourquoi !
+\setcounter{section}{0} % 
+\renewcommand*{\theHsection}{Discussion.\the\value{section}}
 
 % COVER PAGE
 \centerline{\bfseries\textcolor{bleusection}{ \Huge Discussion générale}}  
