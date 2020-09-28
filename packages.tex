@@ -92,10 +92,6 @@ breaklinks=true]{hyperref}
 
 \usepackage{bookmark} % to manage bookmarks (levels etc.)
 
-%\xapptocmd{\appendices}{%
-%  \renewcommand{\theHchapter}{\appendixname.\thechapter}
-%}{}{}
-
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\} %titre de paragraphe
 
 
@@ -111,9 +107,7 @@ breaklinks=true]{hyperref}
 \newcommand{\btheorem}{\begin{theorem}}
 	\newcommand{\etheorem}{\end{theorem}}
 
-%\newtheorem{encadre}{Encadre}
 \newcounter{encadrecompteur}
-%\setcounter{encadre}{1}
 
 % Avoir une numérotation continue des figures et tableaux dans tout le document
 % https://tex.stackexchange.com/questions/28333/continuous-v-per-chapter-section-numbering-of-figures-tables-and-other-docume
@@ -140,36 +134,15 @@ breaklinks=true]{hyperref}
 \definecolor{chameleon1}{RGB}{120, 179, 31}
 \definecolor{chameleon2}{RGB}{137, 179, 72}
 \definecolor{chameleon3}{RGB}{184, 209, 145}
-\definecolor{blueblob}{RGB}{153, 0, 0}%{51, 153, 255}
-%\definecolor{vertsection}{RGB}{32,54,28}
+\definecolor{blueblob}{RGB}{153, 0, 0}
 \definecolor{bleusection}{RGB}{8,61,99}
-%\definecolor{vertsubsection}{RGB}{64,108,57}
 \definecolor{bleusubsection}{RGB}{59,125,205}
 \definecolor{resume}{RGB}{202, 229, 237}
 \definecolor{textresume}{RGB}{21, 34, 17}
-%173, 235, 173
-\definecolor{encadre}{RGB}{175, 207, 175}%166, 217, 166
+\definecolor{encadre}{RGB}{175, 207, 175}
 
-%%%%%%%%%%%%%%%%% Pour la rédaction uniquement
-% Couleur rouge pour les parties affichées comme à faire (TODO)
-\newcommand{\TODO}[1]{(\textcolor{red}{TODO : #1})}
-
-\newcommand{\pp}{\textperiodcentered}
-\newcommand{\comment}[1]{}
-
-% Marcro to display l'entête des paragraphe: pour la rédaction seulement, ensuite fixer à false
-\newboolean{displaytete}
-\setboolean{displaytete}{false}
-\newcommand{\tete}[1]{%
-	\ifthenelse{%
-		\boolean{displaytete}}{% cond
-		{\small\emph{\textcolor{tete}{(Idée : #1)}\\}}}{% true
-		}%false
-}
 \setlength{\fboxrule}{0pt}
 \setlength{\fboxsep}{10pt}
-
-
 
 %%%%%%%%%%%%%%%% define colorbox
 \newsavebox{\selvestebox}
@@ -182,39 +155,7 @@ breaklinks=true]{hyperref}
   \colorbox{\colboxcolor}{\framebox{\usebox{\selvestebox}}}%
 	}
 	 %\end{center}}
-% define la loupe des ancadre
-\newcommand\monimage{\includegraphics[width =17pt]{./misc/loupe}}
-\newcommand\mabarre{\includegraphics{barre.png}}
 
-\renewcommand\bcStyleTitre[1]{\bfseries{#1}}
-
-	 %\begin{minipage}{\dimexpr\columnwidth-2\fboxsep\relax}
-	 
-	 
-	 
-%%%%%%%%%%%%%%%% Style et espacements des sections
-
-% Package de style de chapitres avec son template "Sonny"
-%\usepackage[Sonny]{fncychap} % http://www.nagel-net.de/Latex/DOKU/fncychap.pdf
-%\titleformat{\chapter}[hang]{\fillast}{\bfseries\MakeUppercase{\chaptertitlename\space\thechapter : #1}}{1ex minus .1ex}{\bfseries\uppercase}
-%\titleformat{\chapter}[hang]{\fillast}{\bfseries{\chaptertitlename\space\thechapter :}}{1ex minus .1ex}{\bfseries}
-
-% Alternative de titre mais qui fout le bordel
-%\newpagestyle{headplain}{%
-%\sethead[\thepage][][]{}{}{\thepage}}
-%\titleformat{\chapter}
-%[block]
-%{\normalfont\huge\bfseries}
-%{\thechapter}
-%{0pt} %
-%{\hspace{20pt}\huge}
-%\titlespacing*{\chapter}{0pt}{0pt}{30pt}
-
-
-
-
-
-%\allsectionsfont{\MakeTextUppercase}
 
 % Noms des variables utilisées dans les bandeaux et tableaux
 \renewcommand{\&}{and}
@@ -284,29 +225,6 @@ breaklinks=true]{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter Header STYLE
 \setlength{\unitlength}{1mm} % defines the unit used in the picture environment
-
-%The green square
-%\newcommand{\blob}{\textcolor{bleusubsection}{\rule[-10pt]{4cm}{1cm}}} % [offset vertical]{largeur}{hauteur}
-%\newcommand{\blobblue}{\textcolor{blueblob}{\rule[-23pt]{2.2cm}{2.2cm}}} % [offset vertical]{largeur}{hauteur}
-
-% The upper right mark
-%\newcommand{\rblob}[1]{ #1
-%\begin{picture}(0,0)(5,0)
-%\put(0,0){\blob}
-%\end{picture}}
-
-%\newcommand{\rblobblue}[1]{ #1
-%\begin{picture}(0,0)(-6.5,0)
-%\put(0,0){\blobblue}
-%\end{picture}}
-
-% The upper left mark
-%\newcommand{\lblob}[1]{
-%\begin{picture}(0,0)(28.5,0)
-%\put(0,0){\blob}
-%\end{picture}%
-%#1
-%}
 
 
 %%%%%%%%%%%%%%%%% Haut de page
@@ -465,8 +383,6 @@ breaklinks=true]{hyperref}
 }
 
 
-
-
 % Section courante
 % Pour définir le nom de section courante
 % https://tex.stackexchange.com/questions/222370/how-can-i-customize-and-use-the-leftmark-and-rightmark-commands-with-custom-fa
@@ -488,21 +404,6 @@ breaklinks=true]{hyperref}
 \end{picture}   
 }
 
-%%%% Backup qui fonctionne
-% RE
-%\newcommand\rsection{ 
-%\begin{picture}(0,0)(5,2) % (width,height)(x-offset,y-offset)
-%    \textcolor{black}{\fontsize{14}{14}\selectfont\sectionname~\thesubsection}
-%\end{picture}   
-%}
-
-% LO
-%\newcommand\lsection{ 
-%\begin{picture}(0,0)(15,2) % (width,height)(x-offset,y-offset)
-%    \textcolor{black}{\fontsize{14}{14}\selectfont\sectionname~\thesubsection}
-%\end{picture}   
-%}
-
 
 %%%%%%%%%%%%%%%%% Bas de page
 % % Numérotation de pages
@@ -512,14 +413,6 @@ breaklinks=true]{hyperref}
 \end{picture}
 \fontsize{12}{12}\selectfont\thepage
 }
-
-% Commenté car a priori useless mais tester si jamais (le 25/02 à 19h30)
-%\renewcommand{\chaptermark}[1]{%
-%\markboth{\MakeUppercase{%
-%\chaptername}\ \thechapter.%
-%\ #1}{}}
-
-
 
 
 %%%%%%%%%%%%%%%% Style des numéros de sections, figures etc.
@@ -546,26 +439,13 @@ breaklinks=true]{hyperref}
 
 % Style titre chapitre
 \fancypagestyle{titre_chapitre}{
-%    \titleformat{\chapter} % \chapter
-%    [block]
-%    {\normalfont\huge\bfseries} % style du numéro de chapitre
-%%    {\thechapter}
-%    {0pt} %
-%    {\hspace{20pt}\Large} % style du titre de chapitre
-%    \titlespacing*{\chapter}{0pt}{0pt}{25pt}
     \titleformat{\chapter}[display]
     {\normalfont\bfseries\color{bleusection}}{}{0pt}{\LARGE}
     \titlespacing*{\chapter}{0pt}{-60pt}{20pt}
-    % {\normalfont\bfseries}{}{0pt}{\Huge}
-	
 	\fancyhf{}
 	\setlength{\headheight}{20pt plus4mm minus4mm}
 	\setlength{\headsep}{42pt} % hauteur entre le header et le début du texte
 	\renewcommand{\headrulewidth}{0pt}
-%	\fancyhead[RO]{\rbluebandintro}
-%	\fancyhead[LE]{\lbluebandintro}
-%	\fancyhead[RE]{\rsection}
-%	\fancyhead[LO]{\lsection}
     \fancyfoot[C]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
 	\fancyfoot[LE]{\numberbaleine} % numérotation baleine pages paires
 	\fancyfoot[RO]{\numberbaleine} % numérotation baleine pages impaires
@@ -662,8 +542,6 @@ breaklinks=true]{hyperref}
 	\setlength{\headheight}{20pt plus4mm minus4mm}
 	\setlength{\headsep}{42pt}
 	\renewcommand{\headrulewidth}{0pt}
-	%\fancyhead[RO]{\rblob{\hphantom{\chaptername~\thechapter}}}
-	%\fancyhead[LE]{\lblob{\hphantom{\chaptername~\thechapter}}}
 	\fancyfoot[LE]{\numberbaleine}
 	\fancyfoot[RO]{\numberbaleine}
 	\fancyfoot[C]{\vspace*{0.05cm}\includegraphics[width=12cm]{images/misc/bandeau_bas.png}\\} % Pied de page avec le récif
@@ -720,12 +598,8 @@ breaklinks=true]{hyperref}
 %\renewcommand{\cftchappresnum}{CH.\space} % Nom chapitre tel que dans le TOC
 \setlength{\cftchapnumwidth}{\widthof{\textbf{CH~999~}}}
 
-%\cftsetindents{chapter}{0em}{1em}      % set amount of indenting
-%\cftsetindents{section}{0em}{1em}
-
 %For reference
 \usepackage{natbib}
-%\bibliographystyle{apalike}%\usepackage{apalike}
 
 % Pour rajouter le doi en lien hypertexte
 \usepackage{doi}
@@ -734,9 +608,6 @@ breaklinks=true]{hyperref}
 
 %\setlength\bibindent{0em}
 \renewcommand{\bibname}{Références bibliographiques} % Titre de la table bibliographique en en tête de chapitre (pas dans la toc)
-%\renewcommand{\bibname}{\protect\centerline{References}}
-%\newcommand{\setbibname}[1]{\bibname[#1]{\centering #1}}
-
 
 
 %%%%%%%%%%%%%%%%% Abbréviations

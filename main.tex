@@ -1,25 +1,14 @@
-% GENERAL TIPS
-% https://www.overleaf.com/learn/latex/bold,_italics_and_underlining#Underlined_text
-% https://fr.overleaf.com/learn/latex/Font_sizes,_families,_and_styles#Font_sizes
-% https://www.tuteurs.ens.fr/logiciels/latex/macros.html
-% http://www.malinc.se/math/latex/basiccodeen.php
-
 
 \documentclass[11pt,a4paper]{book} % This style for A4 format.
-% format thèse Montpellier:
-% http://theses-en-ligne.fr/montpellier/
 
 % Importation des packages, commandes
 \input{packages}
-
-% Booléen pour afficher ou pas les commentaires de chapitres (pour la rédaction uniquement)
-\setboolean{displaytete}{false}
-
 
 %%%%%%%%%%%% Debut du document
 \begin{document}
 \renewcommand*\appendixautorefname{Annexe} % changer le nom "Appendix" en "Annexe" pours les \autoref
 \renewcommand*\chapterautorefname{Chapitre} % changer le nom "Chapter" en "Chapitre" pours les \autoref
+
 %%% Page de garde
 \includepdf[scale=1, pages=-,pagecommand={\thispagestyle{empty}}]{couverture_these_UM.pdf}
 
@@ -29,7 +18,6 @@
 \thispagestyle{empty}
 \hfill
 \newpage
-
 
 %%% Page de garde perso
 \includepdf[scale=1.02, pages=-,pagecommand={\thispagestyle{empty}}]{couverture_these_perso.pdf}
@@ -60,11 +48,8 @@
 %%% Table des matières
 \newpage
 \begingroup
-\hypersetup{linkcolor=black}
-%\begin{spacing}{1.5}
-% \advance\cftchapnumwidth -0.5em\relax % tentative de réduire l'espace entre numéro de chapitre et nom dans la toc...
-	\tableofcontents
-%\end{spacing}
+    \hypersetup{linkcolor=black}
+    \tableofcontents
 \endgroup
 \newpage
 
@@ -95,7 +80,6 @@
 \endgroup
 \newpage
 
-
 % Restauration de la valeur originale de addvspace
 \renewcommand{\addvspace}[1]{\origaddvspace{#1}}
 
@@ -106,10 +90,7 @@
 \hfill
 \newpage
 
-%\mainmatter % partie principale du bouquin % Sinon la numérotation redémarre de là
 \pagestyle{main}
-%\pagenumbering{arabic} % On commence la numérotation en chiffres arabes
-
 
 %%% Introduction
 \part{Introduction générale}
@@ -146,10 +127,6 @@
 
 
 %%% Bibliographie
-% Première page sans la pastille bleue
-% https://tex.stackexchange.com/questions/117328/fancyhdr-does-not-apply-same-header-footer-on-chapter-and-non-chapter-pages
-% https://www.overleaf.com/learn/latex/Natbib_citation_styles
-
 \pagestyle{references}
 \part*{REFERENCES BIBLIOGRAPHIQUES}
 
@@ -157,22 +134,9 @@
 \bookmarksetup{startatroot}
 \clearpage
 \pagestyle{references}
-%\addcontentsline{toc}{section}{RÉFÉRENCES BIBLIOGRAPHIQUES}
 \hypersetup{linkcolor=bluecite}
 \bibliographystyle{apalike-perso.bst} % apalike
 \bibliography{references}
-%    \titleformat{\part}[display]
-%    {\normalfont\bfseries\color{bleusection}}{}{0pt}{\Huge}
-%    \titlespacing*{\part}{0pt}{-60pt}{20pt}
-
-%\titleformat{\part}[display]
-%{\sffamily \centering \huge \titlerule[1pt]\vspace{8pt}}%format
-%{}%
-%{5pt}%
-%{}%
-%[\vspace{12pt}\titlerule]
-
-% Bouton retour biblio https://tex.stackexchange.com/questions/237485/how-to-go-back-to-body-after-visiting-a-reference
 
 \cleardoublepage % sinon bug affichage pastille bleue réfs à la fin
 
@@ -183,10 +147,8 @@
 \pagestyle{appendix}
 \clearpage
 \begin{appendices}
-	%\appendixpage % rajouter une page vide avec "Annexes"
 	\noappendicestocpagenum
 	\appendix
-	%\addappheadtotoc
 	
 	\chapter{Cahiers de la surveillance Medtrix n°3} 
 	\label{annexe-cahiers}
@@ -222,43 +184,9 @@
 
 \end{appendices}
 
-
 %%% Résumé
 \pagestyle{abstract}
 \backmatter % peut-être pas indispensable
 \input{8_abstract}
 
 \end{document}
-
-
-% Rappels positionnement de figures et tables
-% h= here mas o menos
-% t = top of the page
-% b = bottom of the page
-% p = Put on a special page for floats only
-% ! Override internal parameters LaTeX uses for determining "good" float positions
-% H = Places the float at precisely the location in the LaTeX code. Requires the float package. This is somewhat equivalent to "h!"
-
-% Structure image multiple
-%\begin{figure}[h]
-%\caption{Caption for this figure with two images}
-%\label{fig:image2}
-%    \begin{subfigure}{0.5\textwidth}
-%        \includegraphics[width=0.9\linewidth, height=5cm]{lion-logo} 
-%        \caption{Caption1}
-%        \label{fig:subim1}
-%    \end{subfigure}
-%    \begin{subfigure}{0.5\textwidth}
-%        \includegraphics[width=0.9\linewidth, height=5cm]{mesh}
-%        \caption{Caption 2}
-%        \label{fig:subim2}
-%    \end{subfigure}
-%\end{figure}
-
-
-% Détails tableaux
-% \hline = rajouter une ligne horitontale
-% {l c r} = gauche, centré, droite
-% { | c | c | c |} = trois colonnes centrées avec barres verticales
-
-% https://tex.stackexchange.com/questions/202046/width-of-the-caption-of-a-figure
