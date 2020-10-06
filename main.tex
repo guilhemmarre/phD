@@ -4,6 +4,9 @@
 % Importation des packages, commandes
 \input{packages}
 
+% Suppression de la page blanche "PARTIE..." pour les références => mais par contre mauvaise page pour la "page partie" du coup 
+%\renewcommand{\part}[1]{\addcontentsline{toc}{part}{#1}}
+
 %%%%%%%%%%%% Debut du document
 \begin{document}
 \renewcommand*\appendixautorefname{Annexe} % changer le nom "Appendix" en "Annexe" pours les \autoref
